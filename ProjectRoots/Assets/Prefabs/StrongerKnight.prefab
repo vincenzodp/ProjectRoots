@@ -586,7 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5366683130977175769}
   - component: {fileID: 5616253317484425012}
-  - component: {fileID: 5060637657846847954}
+  - component: {fileID: 5908326153522035934}
   m_Layer: 0
   m_Name: StrongerKnight
   m_TagString: Untagged
@@ -628,7 +628,7 @@ MonoBehaviour:
   startHealth: 0
   deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &5060637657846847954
+--- !u!114 &5908326153522035934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -640,6 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5333a0e6f226554189e57d9c1e1573f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spawn: {fileID: 0}
 --- !u!1 &4825026726707360056
 GameObject:
   m_ObjectHideFlags: 0

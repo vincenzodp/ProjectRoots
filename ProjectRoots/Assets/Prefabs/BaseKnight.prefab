@@ -937,7 +937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3794779856223019536}
   - component: {fileID: 408312918030150600}
-  - component: {fileID: 4700599534299767537}
+  - component: {fileID: 5942727293476238081}
   m_Layer: 0
   m_Name: BaseKnight
   m_TagString: Untagged
@@ -979,7 +979,7 @@ MonoBehaviour:
   startHealth: 0
   deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &4700599534299767537
+--- !u!114 &5942727293476238081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -991,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5333a0e6f226554189e57d9c1e1573f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spawn: {fileID: 0}
 --- !u!1 &5093928568843292008
 GameObject:
   m_ObjectHideFlags: 0
