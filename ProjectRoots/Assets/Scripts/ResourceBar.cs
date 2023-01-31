@@ -43,17 +43,20 @@ public class ResourceBar : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             IncreaseResource(10);
+        }
+
+        if(Input.GetKeyDown(KeyCode.F) && slider.value >= 10)
+        {
+            DecreaseResource(10);
+            
             fireworks.Play();
         }
 
-        if(Input.GetKeyDown(KeyCode.Backspace))
-        {
-            DecreaseResource(10);
-        }
+        
     }
 
 
-    void IncreaseResource(int amount)
+    public void IncreaseResource(int amount)
     {
         if(amount > 0)
         {
@@ -63,12 +66,12 @@ public class ResourceBar : MonoBehaviour
             {
                 slider.value = maximumResourceAllowed;
             }
-            resourceText.text = slider.value.ToString();
+            resourceText.text = "$" + slider.value.ToString();
 
         }
     }
 
-    void DecreaseResource(int amount)
+    public void DecreaseResource(int amount)
     {
         if(amount > 0)
         {
@@ -79,7 +82,12 @@ public class ResourceBar : MonoBehaviour
                 slider.value = 0;
             }
 
-            resourceText.text = slider.value.ToString();
+            resourceText.text = "$" + slider.value.ToString();
         }
+    }
+
+    public int GetResource()
+    {
+        return (int) slider.value;
     }
 }
