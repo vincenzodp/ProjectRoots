@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 5366683130977175769}
   - component: {fileID: 5616253317484425012}
   - component: {fileID: 5908326153522035934}
+  - component: {fileID: 7047240344468425835}
   m_Layer: 0
   m_Name: StrongerKnight
   m_TagString: Untagged
@@ -641,6 +642,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
+--- !u!95 &7047240344468425835
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697704606351331939}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 164b2e74a0643c74ead0db2ae5dd52ea, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7bfe97d113e3ef54fbc59ade1c657b65, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4825026726707360056
 GameObject:
   m_ObjectHideFlags: 0

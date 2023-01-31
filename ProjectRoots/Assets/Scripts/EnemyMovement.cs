@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         // The fraction of the animation that has happened so far is
         // equal to the elapsed time divided by the desired enemy speed
         
-        float fracComplete = (Time.time - startTime) * enemy.speed / 100f;
+        float fracComplete = (Time.time - startTime) * enemy.speed / 150f;
 
         transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);
         transform.position += center;

@@ -938,6 +938,7 @@ GameObject:
   - component: {fileID: 3794779856223019536}
   - component: {fileID: 408312918030150600}
   - component: {fileID: 5942727293476238081}
+  - component: {fileID: -2916716239058410156}
   m_Layer: 0
   m_Name: BaseKnight
   m_TagString: Untagged
@@ -992,6 +993,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
+--- !u!95 &-2916716239058410156
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603264313011697834}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c74e689c089568b46806560da4860e3a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 06b7c3eadb7c96044a66acd029f66fb7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &5093928568843292008
 GameObject:
   m_ObjectHideFlags: 0
