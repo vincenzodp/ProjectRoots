@@ -21,6 +21,7 @@ public class Launcher : MonoBehaviour
     public void StartShooting()
     {
         _canShoot = true;
+        Shoot();
     }
 
     private void Shoot()

@@ -59,10 +59,10 @@ public abstract class Projectile : MonoBehaviour
         }
 
 
-        Vector3 riseRelCenter = _spawnerTransform.position - center;
-        Vector3 setRelCenter = _destinationTarget.position - center;
+        Vector3 riseRelCenter = _spawnerTransform.position + Vector3.up * 2 - center;
+        Vector3 setRelCenter = _destinationTarget.position + Vector3.up - center;
 
-        float fracComplete = (Time.time - _startTime) * _speed / 150f;
+        float fracComplete = (Time.time - _startTime) * _speed /*/ 150f*/;
 
         transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);
         transform.position += center;
