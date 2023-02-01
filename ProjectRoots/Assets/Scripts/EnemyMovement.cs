@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
             Debug.Log("Tree reached");
-            Destroy(enemy);
+            Destroy(enemy); //! gameObject
         }
         //enemy.speed = enemy.startSpeed;
     }
