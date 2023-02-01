@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     public Transform spawnPoint;
+    //public Transform spawnPoint1;
     public Transform[] enemyPrefab;
 
     [SerializeField]
@@ -36,10 +37,12 @@ public class WaveSpawner : MonoBehaviour
         if (waveIndex < 3)
         {
             Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoint.position, spawnPoint.rotation);
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoint1.position, spawnPoint1.rotation);
         }
         else
         {
             Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint.position, spawnPoint.rotation);
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint1.position, spawnPoint1.rotation);
         }
     }
 

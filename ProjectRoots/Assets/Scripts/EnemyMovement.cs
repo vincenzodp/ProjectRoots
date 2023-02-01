@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
 
         target = GameObject.FindGameObjectWithTag("Tree").transform;
         Spawn = GameObject.Find("SpawnPoint").transform;
-        //Spawn = GameObject.Find("SpawnPoint(1)").transform;
+        //Spawn1 = GameObject.Find("SpawnPoint(1)").transform;
         enemy = GetComponent<Enemy>();
         startTime = Time.time;
     }
@@ -33,14 +33,14 @@ public class EnemyMovement : MonoBehaviour
         transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);
         transform.position += center;
 
-        //Vector3 dir = target.position - transform.position;
-        //transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+        Vector3 relativePos = target.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        transform.rotation = rotation;
 
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
             Debug.Log("Tree reached");
             Destroy(enemy);
         }
-        //enemy.speed = enemy.startSpeed;
     }
 }
