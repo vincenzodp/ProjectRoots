@@ -359,6 +359,7 @@ MonoBehaviour:
   enemyPrefab:
   - {fileID: 3794779856223019536, guid: afec44b662da7a9439960908fd147d8a, type: 3}
   - {fileID: 5366683130977175769, guid: fb5bec678984f124cbd9eda23ada5e3b, type: 3}
+  - {fileID: 460233795014533484, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
   countdown: 2
   cooldown: 5
   waveIndex: 0

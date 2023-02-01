@@ -37,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
         slider.value -= 1;
         renderer.material.color = Color.red;
         Invoke("ResetColor", flashTime);
-        //Debug.Log("Colpito");
+      
     }
     void ResetColor()
     {
