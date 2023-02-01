@@ -588,9 +588,11 @@ GameObject:
   - component: {fileID: 5616253317484425012}
   - component: {fileID: 5908326153522035934}
   - component: {fileID: 7047240344468425835}
+  - component: {fileID: 8917688769124320413}
+  - component: {fileID: -9189291692279950798}
   m_Layer: 0
   m_Name: StrongerKnight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -642,6 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
+  Spawn1: {fileID: 0}
 --- !u!95 &7047240344468425835
 Animator:
   serializedVersion: 5
@@ -662,6 +665,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!136 &8917688769124320413
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697704606351331939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.5463262
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7731631, z: 0}
+--- !u!114 &-9189291692279950798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697704606351331939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad91fc416c4b984d9f33a7751ed1abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4825026726707360056
 GameObject:
   m_ObjectHideFlags: 0

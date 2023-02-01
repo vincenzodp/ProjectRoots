@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform spawnPoint;
-    //public Transform spawnPoint1;
+    public Transform[] spawnPoints;
+    //public Transform spawnPoint;
+    //public Transform spawnPoint2;
     public Transform[] enemyPrefab;
 
     [SerializeField]
@@ -28,7 +29,6 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
         countdown -= Time.deltaTime;
-
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
     }
 
@@ -36,19 +36,31 @@ public class WaveSpawner : MonoBehaviour
     {
         if (waveIndex < 3)
         {
-            Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoint.position, spawnPoint.rotation);
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoint1.position, spawnPoint1.rotation);
+            for (int i = 0; i < 2; i++)
+            {
+                Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[i].position, spawnPoints[i].rotation);
+            }
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[0].position, spawnPoints[0].rotation);
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[1].position, spawnPoints[1].rotation);
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint.position, spawnPoint.rotation);           
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint2.position, spawnPoint2.rotation);
         }
         else
         {
-            Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint.position, spawnPoint.rotation);
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint1.position, spawnPoint1.rotation);
+            for (int i = 0; i < 2; i++)
+            {
+                Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoints[i].position, spawnPoints[i].rotation);
+            }
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[0].position, spawnPoints[0].rotation);
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[1].position, spawnPoints[1].rotation);
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint.position, spawnPoint.rotation);
+            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint2.position, spawnPoint2.rotation);
         }
     }
 
     IEnumerator SpawnWave()
     {
-        Debug.Log("Enemy Spawned!");
+        //Debug.Log("Enemy Spawned!");
 
         for (int i = 0; i < waveIndex; i++)
         {
