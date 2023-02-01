@@ -599,6 +599,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2032422249, guid: b249297ecfaaab149a3273b7663a1a3e, type: 3}
+      propertyPath: NextToBuyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d07dc9a550022a74792d211f343e0b16, type: 2}
+    - target: {fileID: 2032422249, guid: b249297ecfaaab149a3273b7663a1a3e, type: 3}
+      propertyPath: NextToBuyHoverMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
     - target: {fileID: 8130720511541251468, guid: b249297ecfaaab149a3273b7663a1a3e, type: 3}
       propertyPath: m_RootOrder
       value: 4

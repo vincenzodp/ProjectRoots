@@ -1,23 +1,17 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent()]
 public class TreeRootManager : MonoBehaviour
 {
+    public float Earning { get; set; }
+
     public List<TreeRootNode> ChildrenNodes { get; private set; } = new List<TreeRootNode>();
+    public Material NextToBuyMaterial;
+    public Material NextToBuyHoverMaterial;
 
     void Start()
     {
-        DisableAllDescendantNodes(ChildrenNodes);
-    }
-
-    static void DisableAllDescendantNodes(List<TreeRootNode> nodes)
-    {
-        foreach(var node in nodes)
-        {
-            node.gameObject.SetActive(false);
-            DisableAllDescendantNodes(node.ChildrenNodes);
-        }
+        ChildrenNodes.ForEach(node => node.SetStatus(TreeRootNode.Status.ToBuy));
     }
 }
