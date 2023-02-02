@@ -39,9 +39,7 @@ public class TreeRootNode : MonoBehaviour
     {
         if (currentStatus == Status.ToBuy)
         {
-            // TODO: Add VFX
             SetStatus(Status.Bought);
-            ChildrenNodes.ForEach(node => node.SetStatus(Status.ToBuy));
         }
     }
 
@@ -68,10 +66,29 @@ public class TreeRootNode : MonoBehaviour
             case Status.Bought:
                 meshRenderer.materials = baseMaterials;
                 gameObject.SetActive(true);
+                ChildrenNodes.ForEach(node => node.SetStatus(Status.ToBuy));
+
+                CreateFloatingText();
+
+                // TODO: Add VFX
                 break;
             case Status.Invisible:
                 gameObject.SetActive(false);
                 break;
+        }
+    }
+
+    void CreateFloatingText()
+    {
+        var floatTextTransform = manager.FloatingText.transform;
+        var cameraMain = Camera.main;
+        var cameraHitRay = cameraMain.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hitInfo;
+        if (Physics.Raycast(cameraHitRay, out hitInfo, 1000f, manager.cameraClickLayerDetection))
+        {
+            var newPosition = new Vector3(hitInfo.point.x, hitInfo.point.y, floatTextTransform.position.z);
+            Instantiate(manager.FloatingText, newPosition, floatTextTransform.rotation);
         }
     }
 
