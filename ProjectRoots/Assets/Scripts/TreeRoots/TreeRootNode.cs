@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 [DisallowMultipleComponent()]
@@ -88,7 +89,9 @@ public class TreeRootNode : MonoBehaviour
         if (Physics.Raycast(cameraHitRay, out hitInfo, 1000f, manager.cameraClickLayerDetection))
         {
             var newPosition = new Vector3(hitInfo.point.x, hitInfo.point.y, floatTextTransform.position.z);
-            Instantiate(manager.FloatingText, newPosition, floatTextTransform.rotation);
+            var newFloatingText = Instantiate(manager.FloatingText, newPosition, floatTextTransform.rotation);
+            var floatingTextMesh = newFloatingText.GetComponentInChildren<TextMeshPro>();
+            floatingTextMesh.text = (-BuyCost).ToString("N0");
         }
     }
 
