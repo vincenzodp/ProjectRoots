@@ -32,14 +32,17 @@ public class Launcher : MonoBehaviour
 
     private void Update()
     {
-        if (_shootingTarget!=null)
+        if (_shootingTarget!=null && _shootingTarget.GetComponent<Enemy>().getHealth() <= 0)
         {
             return;
         }
         else
         {
             _shootingTarget = GameObject.FindWithTag("Enemy")?.transform;
-           
+            if (_shootingTarget != null && _shootingTarget.GetComponent<Enemy>().getHealth() <= 0)
+            {
+                return;
+            }
         }
 
         if (!_canShoot) return;

@@ -16,5 +16,6 @@ public class EnemyDeath : MonoBehaviour
     public void TriggerDeath()
     {
         animator.SetTrigger("Death");
+        //gameObject.tag = "Untagged";
     }
 }

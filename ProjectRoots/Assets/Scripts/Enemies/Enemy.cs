@@ -65,6 +65,11 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    public float getHealth()
+    {
+        return health;
+    }
+
     public void DestroyEnemyEvent()
     {
         Destroy(gameObject);
