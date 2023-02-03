@@ -20,6 +20,7 @@ public class Launcher : MonoBehaviour
 
     public void StartShooting()
     {
+        
         _canShoot = true;
         Shoot();
     }
@@ -31,6 +32,16 @@ public class Launcher : MonoBehaviour
 
     private void Update()
     {
+        if (_shootingTarget!=null)
+        {
+            return;
+        }
+        else
+        {
+            _shootingTarget = GameObject.FindWithTag("Enemy")?.transform;
+           
+        }
+
         if (!_canShoot) return;
 
         if(_intervalBetweenShots <= _elapsedTime)

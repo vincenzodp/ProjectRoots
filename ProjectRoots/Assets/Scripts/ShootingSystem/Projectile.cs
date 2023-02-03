@@ -34,6 +34,11 @@ public abstract class Projectile : MonoBehaviour
 
     private void Update()
     {
+        if (_destinationTarget == null)
+        {
+            return;
+        }
+
         if (!_canStart) return;
 
         ApplyMovement();
@@ -46,6 +51,11 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void ApplyMovement()
     {
+        if(_destinationTarget == null)
+        {
+            return;
+        }
+
         Vector3 center = (_spawnerTransform.position + _destinationTarget.position) * 0.5F;
 
 
@@ -70,5 +80,14 @@ public abstract class Projectile : MonoBehaviour
         Vector3 relativePos = _destinationTarget.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
         transform.rotation = rotation;
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag.Equals("Enemy"))
+        {
+            collider.gameObject.GetComponent<Enemy>().HitByProjectile();
+            Destroy(gameObject);
+        }
     }
 }
