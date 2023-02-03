@@ -17,52 +17,59 @@ public class ResourceBar : MonoBehaviour
 
     float resourceTimer;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         slider.value = 0;
         resourceTimer = resourceInterval;
-        maximumResourceAllowed = (int) slider.maxValue;
+        maximumResourceAllowed = (int)slider.maxValue;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(resourceTimer <= 0)
+        if (resourceTimer <= 0)
         {
             IncreaseResource(resourceIncrement);
             resourceTimer = resourceInterval;
         }
         else
         {
-            resourceTimer -= Time.deltaTime; 
+            resourceTimer -= Time.deltaTime;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             IncreaseResource(10);
         }
 
-        if(Input.GetKeyDown(KeyCode.F) && slider.value >= 10)
+        if (Input.GetKeyDown(KeyCode.F) && slider.value >= 10)
         {
             DecreaseResource(10);
-            
+
             fireworks.Play();
+
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy, 1f);
+            }
         }
 
-        
+
     }
 
 
     public void IncreaseResource(int amount)
     {
-        if(amount > 0)
+        if (amount > 0)
         {
             slider.value += amount;
 
-            if(slider.value > maximumResourceAllowed)
+            if (slider.value > maximumResourceAllowed)
             {
                 slider.value = maximumResourceAllowed;
             }
@@ -73,11 +80,11 @@ public class ResourceBar : MonoBehaviour
 
     public void DecreaseResource(int amount)
     {
-        if(amount > 0)
+        if (amount > 0)
         {
             slider.value -= amount;
-            
-            if(slider.value < 0)
+
+            if (slider.value < 0)
             {
                 slider.value = 0;
             }
@@ -88,6 +95,6 @@ public class ResourceBar : MonoBehaviour
 
     public int GetResource()
     {
-        return (int) slider.value;
+        return (int)slider.value;
     }
 }
