@@ -24,7 +24,6 @@ public class EnemyAttack : MonoBehaviour
         slider = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
     }
 
-  
     void Update()
     {
         if (Vector3.Distance(transform.position, target.position) <= 2.5f)
@@ -32,13 +31,14 @@ public class EnemyAttack : MonoBehaviour
             animator.SetTrigger("Attack");
         }
     }
+
     void AttackEvents()
     {
         slider.value -= 1;
         renderer.material.color = Color.red;
-        Invoke("ResetColor", flashTime);
-      
+        Invoke("ResetColor", flashTime);    
     }
+
     void ResetColor()
     {
         renderer.material.color = originalColor;

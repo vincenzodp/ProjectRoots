@@ -2,20 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StrongerKnight : Enemy
+public class BaseKnight : Enemy
 {
     // Start is called before the first frame update
     void Start()
     {
-        startSpeed = 8f;
-        startHealth = 150;
+        startSpeed = 10f;
+        startHealth = 100;
         speed = startSpeed;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        health = startHealth;
     }
 
     protected override void Attack()
