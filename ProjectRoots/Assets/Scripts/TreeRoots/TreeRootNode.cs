@@ -1,14 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 [DisallowMultipleComponent()]
 [RequireComponent(typeof(MeshRenderer))]
 public class TreeRootNode : MonoBehaviour
 {
-    public float EarnedValue;
-    public float BuyCost;
+    public EarningType earningType;
+    public float earningValue;
+    public int buyCost;
+
+    public enum EarningType
+    {
+        Percentage,
+        FixedValue
+    }
 
     public TreeRootNode ParentNode { get; private set; } = null;
     public List<TreeRootNode> ChildrenNodes { get; private set; } = new List<TreeRootNode>();
@@ -39,9 +45,7 @@ public class TreeRootNode : MonoBehaviour
     private void OnMouseDown()
     {
         if (currentStatus == Status.ToBuy)
-        {
-            SetStatus(Status.Bought);
-        }
+            manager.DisplayPurchasePanel(this, buyCost, earningValue, earningType);
     }
 
     private void OnMouseEnter()
@@ -68,30 +72,10 @@ public class TreeRootNode : MonoBehaviour
                 meshRenderer.materials = baseMaterials;
                 gameObject.SetActive(true);
                 ChildrenNodes.ForEach(node => node.SetStatus(Status.ToBuy));
-
-                CreateFloatingText();
-
-                // TODO: Add VFX
                 break;
             case Status.Invisible:
                 gameObject.SetActive(false);
                 break;
-        }
-    }
-
-    void CreateFloatingText()
-    {
-        var floatTextTransform = manager.FloatingText.transform;
-        var cameraMain = Camera.main;
-        var cameraHitRay = cameraMain.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hitInfo;
-        if (Physics.Raycast(cameraHitRay, out hitInfo, 1000f, manager.cameraClickLayerDetection))
-        {
-            var newPosition = new Vector3(hitInfo.point.x, hitInfo.point.y, floatTextTransform.position.z);
-            var newFloatingText = Instantiate(manager.FloatingText, newPosition, floatTextTransform.rotation);
-            var floatingTextMesh = newFloatingText.GetComponentInChildren<TextMeshPro>();
-            floatingTextMesh.text = (-BuyCost).ToString("N0");
         }
     }
 
