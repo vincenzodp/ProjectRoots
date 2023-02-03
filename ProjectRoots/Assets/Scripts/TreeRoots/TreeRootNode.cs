@@ -6,8 +6,15 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class TreeRootNode : MonoBehaviour
 {
-    public float EarnedValue;
-    public float BuyCost;
+    public EarningType earningType;
+    public float earningValue;
+    public int buyCost;
+
+    public enum EarningType
+    {
+        Percentage,
+        FixedValue
+    }
 
     public TreeRootNode ParentNode { get; private set; } = null;
     public List<TreeRootNode> ChildrenNodes { get; private set; } = new List<TreeRootNode>();
@@ -38,11 +45,7 @@ public class TreeRootNode : MonoBehaviour
     private void OnMouseDown()
     {
         if (currentStatus == Status.ToBuy)
-        {
-            // TODO: Add VFX
-            SetStatus(Status.Bought);
-            ChildrenNodes.ForEach(node => node.SetStatus(Status.ToBuy));
-        }
+            manager.DisplayPurchasePanel(this, buyCost, earningValue, earningType);
     }
 
     private void OnMouseEnter()
@@ -68,6 +71,7 @@ public class TreeRootNode : MonoBehaviour
             case Status.Bought:
                 meshRenderer.materials = baseMaterials;
                 gameObject.SetActive(true);
+                ChildrenNodes.ForEach(node => node.SetStatus(Status.ToBuy));
                 break;
             case Status.Invisible:
                 gameObject.SetActive(false);
