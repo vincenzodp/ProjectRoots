@@ -1,17 +1,22 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[Singleton]
+[DisallowMultipleComponent]
 public class EnergyRefiller : MonoBehaviour
 {
-    [SerializeField] float MaxSize = 1500f;
+    public static EnergyRefiller Instance { get; private set; }
+
+    public float MaxSize = 1500f;
     [SerializeField] float InitialValue = 0f;
 
     public delegate void OnValueBelowZeroOnceHandler();
     public event OnValueBelowZeroOnceHandler OnValueBelowZeroOnce;
     bool isValueBelowZeroNotified = false;
 
-    public float FixedEarnedValuePerSecond { get; set; } = 1f;
-    public float EarnedValueIncreasePercentage { get; set; } = 0f;
+    public float FixedEarnedValuePerSecond { get; set; } = 20f;
+    public float EarnedValueIncreasePercentage { get; set; } = 0.03f;
     public float EarnedValueTemporaryBonusPercentage { get; set; } = 0f;
     public float CalculatedEarnedValuePerSecond
     {
@@ -48,6 +53,13 @@ public class EnergyRefiller : MonoBehaviour
 
     public bool CanConsumeValue(float amount) => Value >= amount;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     void Update()
     {
         var valueToIncrease = CalculatedEarnedValuePerSecond * Time.deltaTime;

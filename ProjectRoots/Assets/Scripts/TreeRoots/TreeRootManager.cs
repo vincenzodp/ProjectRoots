@@ -41,10 +41,10 @@ public class TreeRootManager : MonoBehaviour
     }
 
 
-    public void DisplayPurchasePanel(TreeRootNode requestingNode, int buyCost, float earningValue, TreeRootNode.EarningType earningType)
+    public void DisplayPurchasePanel(TreeRootNode requestingNode, int buyCost, float earningValue, TreeRootNode.EarningType earningType, float maxSizeIncrease)
     {
         var clickPosition = GetClickPointOnRoots();
-        PurchasePanel.Show(requestingNode, clickPosition, buyCost, earningValue, earningType);
+        PurchasePanel.Show(requestingNode, clickPosition, buyCost, earningValue, earningType, maxSizeIncrease);
     }
 
     Vector3 GetClickPointOnRoots()

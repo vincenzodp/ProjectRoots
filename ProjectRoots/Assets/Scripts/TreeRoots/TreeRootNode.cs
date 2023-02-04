@@ -8,6 +8,7 @@ public class TreeRootNode : MonoBehaviour
 {
     public EarningType earningType;
     public float earningValue;
+    public float maxSizeIncrease;
     public int buyCost;
 
     public enum EarningType
@@ -45,7 +46,7 @@ public class TreeRootNode : MonoBehaviour
     private void OnMouseDown()
     {
         if (currentStatus == Status.ToBuy)
-            manager.DisplayPurchasePanel(this, buyCost, earningValue, earningType);
+            manager.DisplayPurchasePanel(this, buyCost, earningValue, earningType, maxSizeIncrease);
     }
 
     private void OnMouseEnter()

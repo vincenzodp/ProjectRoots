@@ -5,13 +5,13 @@ using UnityEngine;
 
 [Singleton]
 [DisallowMultipleComponent]
+[RequireComponent(typeof(EnergyRefiller))]
 public class GameManager : MonoBehaviour
 {
     public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
     public event OnRootunlocked onRootUnlocked;
 
     public static GameManager Instance { get; private set; }
-    public float TreeEnergy { get; private set; }
 
     private DefenseManager _defenseManager;
 
