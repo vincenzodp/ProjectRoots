@@ -19,12 +19,20 @@ public class PowerUpController : MonoBehaviour
     [Tooltip("The RootNodes to unlock to use this power up")]
     [SerializeField] List<TreeRootNode> _linkedRootNodes;
 
+    [SerializeField] SpriteRenderer _powerUpSpriteRenderer; 
 
     private void Awake()
     {
         //FindObjectOfType<TreeRootManager>().onRootUnlocked += OnRootUnlocked;
         FindObjectOfType<GameManager>().onRootUnlocked += OnRootUnlocked;
 
+        VisualizePowerUp();
+    }
+
+
+    private void VisualizePowerUp()
+    {
+        _powerUpSpriteRenderer.sprite = _powerUpData.sprite;
     }
 
     /// <summary>
@@ -53,5 +61,7 @@ public class PowerUpController : MonoBehaviour
     public void Unlock()
     {
         onUnlocked?.Invoke(_powerUpData);
+
+        Debug.Log($"Power Up unlocked: {_powerUpData.name}");
     }
 }
