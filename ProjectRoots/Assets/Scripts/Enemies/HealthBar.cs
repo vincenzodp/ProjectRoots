@@ -15,11 +15,6 @@ public class HealthBar : MonoBehaviour
         slider.enabled = false;
     }
 
-    public void Update()
-    {
-        health = GetComponent<Enemy>().getHealth();
-    }
-
     public void SetHealthBarMaxHealth()
     {
         slider.maxValue = health;
@@ -27,8 +22,9 @@ public class HealthBar : MonoBehaviour
         //fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetHealthBarHealth()
+    public void SetHealthBarHealth(float currenHealth)
     {
+        health = currenHealth;
         canvas.enabled = true;
         slider.enabled = true;
         slider.value = health;

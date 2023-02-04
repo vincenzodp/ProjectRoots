@@ -17,10 +17,11 @@ public abstract class Enemy : MonoBehaviour
         health = startHealth;
     }
 
-    public void HitByProjectile()
+    public void HitByProjectile(float damage)
     {
-        health -= 10;
-        GetComponent<HealthBar>().SetHealthBarHealth();
+        health -= damage;
+        GetComponent<HealthBar>().SetHealthBarHealth(health);
+        
         if (health <= 0)
         {
             GetComponent<EnemyMovement>().stopmoving();
