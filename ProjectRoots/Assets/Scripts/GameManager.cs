@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour
         }
 
         SubscribeToInstantiatedObjsEvents();
+        EnergyRefiller.Instance.OnValueBelowZeroOnce += EnergyBelowZeroEmitted;
     }
 
-
-    private void SubscribeToInstantiatedObjsEvents()
+    void SubscribeToInstantiatedObjsEvents()
     {
         FindObjectsOfType<PowerUpController>().ToList().ForEach(puc => { puc.onUnlocked += OnPowerUpUnlocked; });
     }
@@ -66,5 +66,15 @@ public class GameManager : MonoBehaviour
     {
         onRootUnlocked?.Invoke(unlockedRootNode);
 
+    }
+
+    void EnergyBelowZeroEmitted()
+    {
+        Debug.Log("MORTE!!!");
+    }
+
+    private void OnDestroy()
+    {
+        EnergyRefiller.Instance.OnValueBelowZeroOnce -= EnergyBelowZeroEmitted;
     }
 }

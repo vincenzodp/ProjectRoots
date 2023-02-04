@@ -21,7 +21,7 @@ public class EnemyAttack : MonoBehaviour
         flashTime = 0.5f;
         renderer = target.gameObject.GetComponent<MeshRenderer>();
         originalColor = target.gameObject.GetComponent<MeshRenderer>().material.color;
-        slider = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
+
     }
 
     void Update()
@@ -34,7 +34,7 @@ public class EnemyAttack : MonoBehaviour
 
     void AttackEvents()
     {
-        slider.value -= 1;
+        EnergyRefiller.Instance.Value -= 1;
         renderer.material.color = Color.red;
         Invoke("ResetColor", flashTime);    
     }
