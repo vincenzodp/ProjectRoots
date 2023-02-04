@@ -17,7 +17,6 @@ public class PurchaseRootPanelManager : MonoBehaviour
     [SerializeField] Button ConfirmButton;
     [SerializeField] Button CancelButton;
 
-
     public delegate void OnPurchaseConfirmedHandler(TreeRootNode requestingNode, Vector3 confirmButtonPosition);
     public event OnPurchaseConfirmedHandler OnPurchaseConfirmed;
 
@@ -36,7 +35,6 @@ public class PurchaseRootPanelManager : MonoBehaviour
     void ConfirmPurchase()
     {
         OnPurchaseConfirmed?.Invoke(requestingNode, ConfirmButton.transform.position);
-        Hide();
     }
     void CancelPurchase()
     {

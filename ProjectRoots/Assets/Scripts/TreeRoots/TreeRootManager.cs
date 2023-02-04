@@ -4,18 +4,14 @@ using UnityEngine;
 [DisallowMultipleComponent()]
 public class TreeRootManager : MonoBehaviour
 {
-    // I would put the event here
-    //public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
-    //public event OnRootunlocked onRootUnlocked;
-
-    public float Earning { get; set; }
-
     public List<TreeRootNode> ChildrenNodes { get; private set; } = new List<TreeRootNode>();
     public Material NextToBuyMaterial;
     public Material NextToBuyHoverMaterial;
-    public GameObject FloatingText;
+    public GameObject FloatingPurchaseFeedbackText;
+    public GameObject NotEnoughEnergyFeedbackText;
     public LayerMask RootsLayer;
     public PurchaseRootPanelManager PurchasePanel;
+
 
     void Start()
     {
@@ -26,12 +22,15 @@ public class TreeRootManager : MonoBehaviour
 
     private void PurchasePanel_OnConfirmClick(TreeRootNode requestingNode, Vector3 confirmButtonPosition)
     {
-        Debug.Log("TODO: Add cost verification here", this);
-        // TODO: add cost verification here
-        requestingNode.SetStatus(TreeRootNode.Status.Bought);
-        CreatePurchaseFeedbackText(confirmButtonPosition, requestingNode.buyCost);
+        if (!EnergyRefiller.Instance.CanConsumeValue(requestingNode.buyCost))
+        {
+            CreateFloatingNotEnoughEnergyFeedbackText(confirmButtonPosition);
+            return;
+        }
 
-        //onRootUnlocked?.Invoke(requestingNode); //Event based
+        PurchasePanel.Hide();
+        requestingNode.SetStatus(TreeRootNode.Status.Bought);
+        CreateFloatingPurchaseFeedbackText(confirmButtonPosition, requestingNode.buyCost);
         GameManager.Instance.NewRootNodeBought(requestingNode);
     }
 
@@ -59,10 +58,15 @@ public class TreeRootManager : MonoBehaviour
             return cameraMain.transform.position;
     }
 
-    void CreatePurchaseFeedbackText(Vector3 position, int cost)
+    void CreateFloatingPurchaseFeedbackText(Vector3 position, int cost)
     {
-        var newFloatingText = Instantiate(FloatingText, position, FloatingText.transform.rotation);
+        var newFloatingText = Instantiate(FloatingPurchaseFeedbackText, position, FloatingPurchaseFeedbackText.transform.rotation);
         var floatingTextManager = newFloatingText.GetComponentInChildren<FloatingPurchaseFeedbackManager>();
         floatingTextManager.DisplayCost(cost);
+    }
+
+    void CreateFloatingNotEnoughEnergyFeedbackText(Vector3 position)
+    {
+        Instantiate(NotEnoughEnergyFeedbackText, position, NotEnoughEnergyFeedbackText.transform.rotation);
     }
 }

@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextToBuyMaterial: {fileID: 2100000, guid: d07dc9a550022a74792d211f343e0b16, type: 2}
   NextToBuyHoverMaterial: {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
-  FloatingText: {fileID: 1157055452664288747, guid: cdc106b2e05299743b90d96503444f0a, type: 3}
+  FloatingPurchaseFeedbackText: {fileID: 1157055452664288747, guid: cdc106b2e05299743b90d96503444f0a, type: 3}
+  NotEnoughEnergyFeedbackText: {fileID: 1157055452664288747, guid: eddcd2ca643caa44781fcba5b89a289a, type: 3}
   RootsLayer:
     serializedVersion: 2
     m_Bits: 256

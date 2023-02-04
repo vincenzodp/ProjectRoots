@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1eeb29b130120446a5a51fc82f63730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSize: 1500
-  WaitSecondsBeforeRefill: 0.2
-  RefillScale: 1
+  MaxSize: 500
+  BaseEarningPerSecond: 20
   InitialValue: 0
