@@ -17,6 +17,8 @@ public class PurchaseRootPanelManager : MonoBehaviour
     [SerializeField] Button ConfirmButton;
     [SerializeField] Button CancelButton;
 
+    [SerializeField] bool usePerSecondsSuffix;
+
     public delegate void OnPurchaseConfirmedHandler(TreeRootNode requestingNode, Vector3 confirmButtonPosition);
     public event OnPurchaseConfirmedHandler OnPurchaseConfirmed;
 
@@ -92,6 +94,9 @@ public class PurchaseRootPanelManager : MonoBehaviour
         if (earningType == TreeRootNode.EarningType.Percentage)
             return $"+{formattedValue}%";
         else
-            return $"+{formattedValue}/s";
+        {
+            var suffix = usePerSecondsSuffix ? "/s" : "";
+            return $"+{formattedValue}{suffix}";
+        }
     }
 }
