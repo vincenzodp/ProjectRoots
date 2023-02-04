@@ -22,7 +22,7 @@ public class EnemyAttack : MonoBehaviour
         animator = GetComponent<Animator>();
         flashTime = 0.5f;
         renderer = target.gameObject.GetComponent<MeshRenderer>();
-        originalColor = target.gameObject.GetComponent<MeshRenderer>().material.color;
+        //originalColor = target.gameObject.GetComponent<MeshRenderer>().material.color;
 
     }
 
@@ -38,11 +38,12 @@ public class EnemyAttack : MonoBehaviour
     {
         EnergyRefiller.Instance.Value -= damage;
         renderer.material.color = Color.red;
+
         Invoke("ResetColor", flashTime);    
     }
 
     void ResetColor()
     {
-        renderer.material.color = originalColor;
+        //renderer.material.color = originalColor;
     }
 }
