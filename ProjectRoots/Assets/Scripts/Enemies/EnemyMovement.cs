@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
     private Enemy enemy;
     private float startTime;
 
+    private Rigidbody _rb;
+
     void Start()
     {
 
@@ -15,10 +17,27 @@ public class EnemyMovement : MonoBehaviour
         Spawn = GameObject.Find("SpawnPoint").transform;
         Spawn1 = GameObject.Find("SpawnPoint2").transform;
         enemy = GetComponent<Enemy>();
+        _rb = GetComponent<Rigidbody>();
         startTime = Time.time;
     }
 
     void Update()
+    {
+        //if (enemy.transform.localPosition.x < 0)
+        //{
+        //    SpawnFromLeft();
+        //}
+        //else
+        //{
+        //    SpawnFromRight();
+        //}
+        if (Vector3.Distance(transform.position, target.position) <= 2.5f)
+        {
+            stopmoving();
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (enemy.transform.localPosition.x < 0)
         {
@@ -27,10 +46,6 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             SpawnFromRight();
-        }
-        if (Vector3.Distance(transform.position, target.position) <= 2.5f)
-        {
-            stopmoving();
         }
     }
 
@@ -41,8 +56,14 @@ public class EnemyMovement : MonoBehaviour
         Vector3 riseRelCenter = Spawn.position - center;
         Vector3 setRelCenter = target.position - center;
         float fracComplete = (Time.time - startTime) * enemy.speed / 150f;
-        transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);
-        transform.position += center;
+
+
+
+        Vector3 nextPosition = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete) + center;
+        //transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);
+        //transform.position += center;
+        _rb.MovePosition(nextPosition);
+
         Vector3 relativePos = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
         transform.rotation = rotation;
@@ -55,8 +76,13 @@ public class EnemyMovement : MonoBehaviour
         Vector3 riseRelCenter = Spawn1.position - center;
         Vector3 setRelCenter = target.position - center;
         float fracComplete = (Time.time - startTime) * enemy.speed / 150f;
-        transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);
-        transform.position += center;
+
+        Vector3 nextPosition = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete) + center;
+        //transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);
+        //transform.position += center;
+        _rb.MovePosition(nextPosition);
+
+
         Vector3 relativePos = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
         transform.rotation = rotation;

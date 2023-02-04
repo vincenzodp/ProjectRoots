@@ -6,27 +6,21 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] protected Transform _destinationTarget;
 
-    [SerializeField] protected float _baseDamage;
-
     [SerializeField] protected float _speed;
 
     protected Transform _spawnerTransform;
     
     protected float _totalDamage;
     
-    protected bool _canStart = false;
-    
     protected float _startTime;
 
-    public void Initialize(Transform spawnerTransform, Transform destinationTarget, float damageIncrement)
+    public void Initialize(Transform spawnerTransform, Transform destinationTarget, float totalDamage)
     {
         _destinationTarget = destinationTarget;
 
         _spawnerTransform = spawnerTransform;
 
-        _totalDamage = _baseDamage + (_baseDamage * damageIncrement / 100);
-
-        _canStart = true;
+        _totalDamage = totalDamage;
 
         _startTime = Time.time;
     
@@ -38,8 +32,6 @@ public abstract class Projectile : MonoBehaviour
         {
             return;
         }
-
-        if (!_canStart) return;
 
         ApplyMovement();
 
@@ -69,8 +61,8 @@ public abstract class Projectile : MonoBehaviour
         }
 
 
-        Vector3 riseRelCenter = _spawnerTransform.position + Vector3.up * 2 - center;
-        Vector3 setRelCenter = _destinationTarget.position + Vector3.up - center;
+        Vector3 riseRelCenter = _spawnerTransform.position  - center;
+        Vector3 setRelCenter = _destinationTarget.position  - center;
 
         float fracComplete = (Time.time - _startTime) * _speed /*/ 150f*/;
 
@@ -84,9 +76,9 @@ public abstract class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag.Equals("Enemy"))
+        if (collider.gameObject.CompareTag("Enemy") && collider.transform == _destinationTarget)
         {
-            collider.gameObject.GetComponent<Enemy>().HitByProjectile();
+            collider.gameObject.GetComponent<Enemy>().HitByProjectile(_totalDamage);
             Destroy(gameObject);
         }
     }

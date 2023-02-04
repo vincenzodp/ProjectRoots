@@ -8,7 +8,7 @@ public class Barbarian : Enemy
     void Start()
     {
         startSpeed = 6f;
-        startHealth = 300;
+        startHealth = 250;
         speed = startSpeed;
         health = startHealth;
     }
