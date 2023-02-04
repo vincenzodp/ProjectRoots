@@ -23,35 +23,10 @@ public abstract class Enemy : MonoBehaviour
         GetComponent<HealthBar>().SetHealthBarHealth();
         if (health <= 0)
         {
-            //nextTarget(); <-- Turret keep firing the same target till is out of the scene
             GetComponent<EnemyMovement>().stopmoving();
             GetComponent<EnemyDeath>().TriggerDeath();
         }
     }
-
-    //public void HitByHeavyProjectile()
-    //{
-    //    health -= 20;
-    //    SetHealthBarHealth();
-    //    if (health <= 0)
-    //    {
-    //        //nextTarget();
-    //        GetComponent<EnemyMovement>().stopmoving();
-    //        GetComponent<EnemyDeath>().TriggerDeath();
-    //    }
-    //}
-
-    //public void HitBySniperProjectile()
-    //{
-    //    health -= 7;
-    //    SetHealthBarHealth();
-    //    if (health <= 0)
-    //    {
-    //        //nextTarget();
-    //        GetComponent<EnemyMovement>().stopmoving();
-    //        GetComponent<EnemyDeath>().TriggerDeath();
-    //    }
-    //}
 
     public float getHealth()
     {
