@@ -13,9 +13,7 @@ public class EnemyVictory : MonoBehaviour
 
     private void Update()
     {
-        //if(gameOver()) {
-        //  TriggerVictory();  
-        //}
+
     }
 
     public void TriggerVictory()
