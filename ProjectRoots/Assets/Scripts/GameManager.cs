@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         {
             case PowerUpsType.UPGRADE_TREE:
                 _treeController.Grow();
+                _defenseManager.NextDefensesBloom();
                 break;
 
             case PowerUpsType.UPGRADE_DEFENSES_ATTACK:

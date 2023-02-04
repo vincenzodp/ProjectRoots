@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] float damage;
+
     Slider slider;
     Animator animator;
     private Transform target;
@@ -34,8 +36,9 @@ public class EnemyAttack : MonoBehaviour
 
     void AttackEvents()
     {
-        EnergyRefiller.Instance.Value -= 1;
-        //renderer.material.color = Color.red;
+        EnergyRefiller.Instance.Value -= damage;
+        renderer.material.color = Color.red;
+
         Invoke("ResetColor", flashTime);    
     }
 

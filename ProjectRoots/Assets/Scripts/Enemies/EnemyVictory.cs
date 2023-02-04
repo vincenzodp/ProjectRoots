@@ -11,11 +11,6 @@ public class EnemyVictory : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-
-    }
-
     public void TriggerVictory()
     {
         animator.SetTrigger("Victory");

@@ -48,7 +48,8 @@ public abstract class Enemy : MonoBehaviour
 
     private void onGameOver()
     {
-        //GetComponent<Enem>
+        GetComponent<EnemyMovement>().stopmoving();
+        GetComponent<EnemyVictory>().TriggerVictory();
     }
 
     private void OnDisable()

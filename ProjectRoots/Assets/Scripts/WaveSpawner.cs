@@ -135,7 +135,7 @@ public class WaveSpawner : MonoBehaviour
 
     private Wave _currentRightWave;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.Instance.onRootUnlocked += OnNewRootUnlocked;
     }

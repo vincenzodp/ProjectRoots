@@ -25,6 +25,8 @@ public class Launcher : MonoBehaviour
 
     private float _elapsedTime;
 
+    private bool _disabled = true;
+
     private void Shoot()
     {
         Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, _damage);
@@ -38,6 +40,8 @@ public class Launcher : MonoBehaviour
 
     private void Update()
     {
+        if (_disabled) return;
+
         if (_shootingTarget == null) return;
 
         if(_elapsedTime >= _fireRate)
@@ -84,23 +88,39 @@ public class Launcher : MonoBehaviour
         _enemiesQueue.Remove(nextTarget);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void DisableDefense()
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Enemy potentialTarget = other.GetComponent<Enemy>();
+        _disabled = true;
+    }
 
-            // if there is no target to shoot, the new entered enemy will be the target
-            // else, it will be added to the queue, from where will be chosen in future
-            if(_shootingTarget == null)
-            {
-                _shootingTarget = potentialTarget;
-            }
-            else
-            {
-                _enemiesQueue.Add(potentialTarget);
-            }
+    public void EnableDefense()
+    {
+        _disabled = false;
+
+    }
+
+    public void EnemyDetected(Enemy potentialTarget)
+    {
+        // if there is no target to shoot, the new entered enemy will be the target
+        // else, it will be added to the queue, from where will be chosen in future
+        if (_shootingTarget == null)
+        {
+            _shootingTarget = potentialTarget;
         }
+        else
+        {
+            _enemiesQueue.Add(potentialTarget);
+        }
+    }
+
+    public void IncrementDamageBy(float percentage)
+    {
+        _damage += (_damage * percentage / 100);
+    }
+
+    public void IncrementFireRateBy(float percentage)
+    {
+        _fireRate += (_fireRate * percentage / 100);
     }
 
 }
