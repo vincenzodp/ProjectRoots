@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3458cf7560132f448992774a3fd1662, type: 3}
   m_Name: UpgradeDefensesDamage
   m_EditorClassIdentifier: 
-  id: 
+  id: 2f634dcb1330218408fc4fc2e4aed209
   description: 
-  sprite: {fileID: 0}
-  type: 0
-  incrementValue: 0
+  sprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
+  type: 1
+  incrementValue: 10
