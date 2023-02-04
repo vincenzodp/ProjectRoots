@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class GameManager : MonoBehaviour
 {
+    public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
+    public event OnRootunlocked onRootUnlocked;
+
     public static GameManager Instance { get; private set; }
     public float TreeEnergy { get; private set; }
-
-
-
 
     private DefenseManager _defenseManager;
 
@@ -64,5 +65,10 @@ public class GameManager : MonoBehaviour
                 _defenseManager.EnableLognshotDefenseUpgrade();
                 break;
         }
+    }
+
+    public void NewRootNodeBought(TreeRootNode unclokedRootNode)
+    {
+        onRootUnlocked?.Invoke(unclokedRootNode);
     }
 }

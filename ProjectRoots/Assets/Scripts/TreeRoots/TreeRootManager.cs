@@ -4,6 +4,10 @@ using UnityEngine;
 [DisallowMultipleComponent()]
 public class TreeRootManager : MonoBehaviour
 {
+    // I would put the event here
+    //public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
+    //public event OnRootunlocked onRootUnlocked;
+
     public float Earning { get; set; }
 
     public List<TreeRootNode> ChildrenNodes { get; private set; } = new List<TreeRootNode>();
@@ -26,6 +30,11 @@ public class TreeRootManager : MonoBehaviour
         // TODO: add cost verification here
         requestingNode.SetStatus(TreeRootNode.Status.Bought);
         CreatePurchaseFeedbackText(confirmButtonPosition, requestingNode.buyCost);
+        
+        //onRootUnlocked?.Invoke(requestingNode); //Event based
+        GameManager.Instance.NewRootNodeBought(requestingNode);
+
+
     }
 
     private void PurchasePanel_OnCancelClick()

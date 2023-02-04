@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3458cf7560132f448992774a3fd1662, type: 3}
   m_Name: UpgradeTree
   m_EditorClassIdentifier: 
-  id: 
+  id: f35ae3c7f5ef8234f822f53d5be51954
   description: 
   type: 0
   incrementValue: 0
