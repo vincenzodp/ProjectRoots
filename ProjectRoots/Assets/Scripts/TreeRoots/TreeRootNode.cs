@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [DisallowMultipleComponent()]
 [RequireComponent(typeof(MeshRenderer))]
@@ -45,13 +46,14 @@ public class TreeRootNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (currentStatus == Status.ToBuy)
+        if (currentStatus == Status.ToBuy && !EventSystem.current.IsPointerOverGameObject())
             manager.DisplayPurchasePanel(this, buyCost, earningValue, earningType, maxSizeIncrease);
     }
 
     private void OnMouseEnter()
     {
-        if (currentStatus == Status.ToBuy)
+
+        if (currentStatus == Status.ToBuy && !EventSystem.current.IsPointerOverGameObject())
             meshRenderer.materials = baseMaterials.Select(m => manager.NextToBuyHoverMaterial).ToArray();
     }
     private void OnMouseExit()
