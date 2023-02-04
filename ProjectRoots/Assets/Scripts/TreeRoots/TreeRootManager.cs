@@ -30,11 +30,9 @@ public class TreeRootManager : MonoBehaviour
         // TODO: add cost verification here
         requestingNode.SetStatus(TreeRootNode.Status.Bought);
         CreatePurchaseFeedbackText(confirmButtonPosition, requestingNode.buyCost);
-        
+
         //onRootUnlocked?.Invoke(requestingNode); //Event based
         GameManager.Instance.NewRootNodeBought(requestingNode);
-
-
     }
 
     private void PurchasePanel_OnCancelClick()
