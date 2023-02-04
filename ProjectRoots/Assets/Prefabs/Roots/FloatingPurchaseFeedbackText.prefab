@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157055452664288746}
   - component: {fileID: 3035855412537488107}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: FloatingPurchaseFeedbackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 1157055453200643653}
   - component: {fileID: 1157055453200643654}
   - component: {fileID: 1157055453200643649}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: TextMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

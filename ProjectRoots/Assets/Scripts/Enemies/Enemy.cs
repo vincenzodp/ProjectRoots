@@ -24,7 +24,6 @@ public abstract class Enemy : MonoBehaviour
         
         if (health <= 0)
         {
-            //nextTarget(); <-- Turret keep firing the same target till is out of the scene
             GetComponent<EnemyMovement>().stopmoving();
             GetComponent<EnemyDeath>().TriggerDeath();
         }

@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextToBuyMaterial: {fileID: 2100000, guid: d07dc9a550022a74792d211f343e0b16, type: 2}
   NextToBuyHoverMaterial: {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
-  FloatingText: {fileID: 1157055452664288747, guid: cdc106b2e05299743b90d96503444f0a, type: 3}
+  FloatingPurchaseFeedbackText: {fileID: 1157055452664288747, guid: cdc106b2e05299743b90d96503444f0a, type: 3}
+  NotEnoughEnergyFeedbackText: {fileID: 1157055452664288747, guid: eddcd2ca643caa44781fcba5b89a289a, type: 3}
   RootsLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -313,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &511418815250035768 stripped
 GameObject:
@@ -333,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &634130229418516850 stripped
 GameObject:
@@ -353,6 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &643103650515218975 stripped
 GameObject:
@@ -373,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &669275605608114933 stripped
 GameObject:
@@ -393,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &1468945668613098515 stripped
 GameObject:
@@ -413,7 +419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
-  buyCost: 500
+  maxSizeIncrease: 0
+  buyCost: 200
 --- !u!1 &1640801195411732674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7347467569671358956, guid: 841a5a5ae60939643a7f2ecda8fd7ce7, type: 3}
@@ -433,6 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &1745166779049204615 stripped
 GameObject:
@@ -453,6 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &1979541141567109320 stripped
 GameObject:
@@ -473,6 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2063053776016640568 stripped
 GameObject:
@@ -493,6 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2108871819258298905 stripped
 GameObject:
@@ -513,6 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2238962194792552715 stripped
 GameObject:
@@ -533,6 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2250991194828475093 stripped
 GameObject:
@@ -553,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2279462109553089485 stripped
 GameObject:
@@ -573,6 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2392222868991237678 stripped
 GameObject:
@@ -593,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2547426958392572862 stripped
 GameObject:
@@ -613,6 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2858203807191251947 stripped
 GameObject:
@@ -633,6 +650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &2887881099055952073 stripped
 GameObject:
@@ -653,6 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3094159533497598389 stripped
 GameObject:
@@ -673,6 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3280514283938051191 stripped
 GameObject:
@@ -693,6 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3311427811293528990 stripped
 GameObject:
@@ -713,6 +734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3380155409168837099 stripped
 GameObject:
@@ -733,6 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3681747713497881706 stripped
 GameObject:
@@ -753,6 +776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3784685877242866588 stripped
 GameObject:
@@ -773,6 +797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3839143982171414298 stripped
 GameObject:
@@ -793,6 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &3847929761638163781 stripped
 GameObject:
@@ -813,6 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &4147606924328711234 stripped
 GameObject:
@@ -833,6 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &4329693075971857256 stripped
 GameObject:
@@ -853,6 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &4518960730546491187 stripped
 GameObject:
@@ -873,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &4600568101886593971 stripped
 GameObject:
@@ -893,6 +923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &4992322583746371297 stripped
 GameObject:
@@ -913,6 +944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &5150775262195681395 stripped
 GameObject:
@@ -933,6 +965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &5523839078634938673 stripped
 GameObject:
@@ -953,6 +986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &5740694717329211894 stripped
 GameObject:
@@ -973,6 +1007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &6155013268102220138 stripped
 GameObject:
@@ -993,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &6259602645944879441 stripped
 GameObject:
@@ -1013,6 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &6295699210608916662 stripped
 GameObject:
@@ -1033,6 +1070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &6313344815809883662 stripped
 GameObject:
@@ -1053,6 +1091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &6463228142333128412 stripped
 GameObject:
@@ -1073,6 +1112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &6809701911439731943 stripped
 GameObject:
@@ -1093,6 +1133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &7001831177127624258 stripped
 GameObject:
@@ -1113,6 +1154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &7366212968141332103 stripped
 GameObject:
@@ -1133,6 +1175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &7395905002425222550 stripped
 GameObject:
@@ -1153,6 +1196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &8073670424148688304 stripped
 GameObject:
@@ -1173,6 +1217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!4 &8410613386974779077 stripped
 Transform:
@@ -1198,6 +1243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earningType: 0
   earningValue: 3
+  maxSizeIncrease: 0
   buyCost: 500
 --- !u!1 &9219801909504150655 stripped
 GameObject:
@@ -1216,8 +1262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb71b860112bc994c8e519dade2e30d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earningType: 0
-  earningValue: 3
+  earningType: 1
+  earningValue: 50
+  maxSizeIncrease: 100
   buyCost: 500
 --- !u!1001 &8300759930626403814
 PrefabInstance:
