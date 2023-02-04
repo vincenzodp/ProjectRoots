@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 {
     public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
     public event OnRootunlocked onRootUnlocked;
+
+    public delegate void OnGameOver();
+    public event OnGameOver onGameOver;
+
     public static GameManager Instance { get; private set; }
 
     //Handful sub-systems references
@@ -71,6 +75,13 @@ public class GameManager : MonoBehaviour
     void EnergyBelowZeroEmitted()
     {
         Debug.Log("MORTE!!!");
+        GameOver();
+
+    }
+
+    private void GameOver()
+    {
+        onGameOver?.Invoke();
     }
 
     private void OnDestroy()

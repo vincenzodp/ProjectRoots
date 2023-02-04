@@ -137,7 +137,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Awake()
     {
-        //GameManager.Instance.onRootUnlocked += OnNewRootUnlocked;
+        GameManager.Instance.onRootUnlocked += OnNewRootUnlocked;
     }
 
     private void OnNewRootUnlocked(TreeRootNode treeRootNodeUnlocked)
