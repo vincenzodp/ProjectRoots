@@ -31,6 +31,20 @@ public class TreeRootManager : MonoBehaviour
         PurchasePanel.Hide();
         requestingNode.SetStatus(TreeRootNode.Status.Bought);
         CreateFloatingPurchaseFeedbackText(confirmButtonPosition, requestingNode.buyCost);
+
+        var energyRefiller = EnergyRefiller.Instance;
+        // Remove Cost
+        energyRefiller.Value -= requestingNode.buyCost;
+
+        // Apply bonus
+        if (requestingNode.earningType == TreeRootNode.EarningType.FixedValue)
+            energyRefiller.FixedEarnedValuePerSecond += requestingNode.earningValue;
+        else
+            energyRefiller.EarnedValueIncreasePercentage += requestingNode.earningValue / 100;
+
+        energyRefiller.MaxValue += requestingNode.maxSizeIncrease;
+
+        // Emit event on top
         GameManager.Instance.NewRootNodeBought(requestingNode);
     }
 

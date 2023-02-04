@@ -420,7 +420,7 @@ MonoBehaviour:
   earningType: 0
   earningValue: 3
   maxSizeIncrease: 0
-  buyCost: 500
+  buyCost: 200
 --- !u!1 &1640801195411732674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7347467569671358956, guid: 841a5a5ae60939643a7f2ecda8fd7ce7, type: 3}
@@ -1262,9 +1262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb71b860112bc994c8e519dade2e30d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earningType: 0
-  earningValue: 3
-  maxSizeIncrease: 0
+  earningType: 1
+  earningValue: 50
+  maxSizeIncrease: 100
   buyCost: 500
 --- !u!1001 &8300759930626403814
 PrefabInstance:

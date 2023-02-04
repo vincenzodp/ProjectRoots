@@ -12,7 +12,7 @@ public class EnergyRefiller : MonoBehaviour
     [SerializeField] float BaseEarningPerSecond = 20f;
     [SerializeField] float InitialValue = 0f;
 
-    public float MaxValue { get => MaxSize; }
+    public float MaxValue { get => MaxSize; set { MaxSize = value; } }
 
     public delegate void OnValueBelowZeroOnceHandler();
     public event OnValueBelowZeroOnceHandler OnValueBelowZeroOnce;
@@ -43,7 +43,7 @@ public class EnergyRefiller : MonoBehaviour
     public float Value
     {
         get => currentValue;
-        private set
+        set
         {
             currentValue = Mathf.Min(value, MaxSize);
             if (currentValue < 0 && !isValueBelowZeroNotified)

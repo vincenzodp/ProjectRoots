@@ -92,6 +92,6 @@ public class PurchaseRootPanelManager : MonoBehaviour
         if (earningType == TreeRootNode.EarningType.Percentage)
             return $"+{formattedValue}%";
         else
-            return $"+{formattedValue}!";
+            return $"+{formattedValue}/s";
     }
 }
