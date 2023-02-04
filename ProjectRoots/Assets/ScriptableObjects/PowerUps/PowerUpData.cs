@@ -12,6 +12,8 @@ public class PowerUpData : ScriptableObject
     ///A brief description of a power up (not needed now)
     public string description;
 
+    public Sprite sprite;
+
     public PowerUpsType type;
 
     ///Optional parameter, there might be many more in future (Editor Scripting Required)

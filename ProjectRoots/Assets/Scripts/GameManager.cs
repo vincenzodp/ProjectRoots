@@ -13,13 +13,19 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
+    //Handful sub-systems references
     private DefenseManager _defenseManager;
+    private TreeController _treeController;
 
     private void Awake()
     {
         _defenseManager = FindObjectOfType<DefenseManager>();
         if (_defenseManager == null)
             Debug.LogError("Defense Manager not found!");
+
+        _treeController = FindObjectOfType<TreeController>();
+        if (_treeController == null)
+            Debug.LogError("Tree Controller not found!");
 
         if (Instance == null)
         {
@@ -44,22 +50,15 @@ public class GameManager : MonoBehaviour
         switch (powerUpData.type)
         {
             case PowerUpsType.UPGRADE_TREE:
+                _treeController.Grow();
                 break;
 
             case PowerUpsType.UPGRADE_DEFENSES_ATTACK:
                 _defenseManager.IncreaseDefensesDamageBy(powerUpData.incrementValue);
                 break;
 
-            case PowerUpsType.UPGRADE_DEFENSE1:
-                _defenseManager.EnableBaseDefenseUpgrade();
-                break;
-
-            case PowerUpsType.UPGRADE_DEFENSE2:
-                _defenseManager.EnableHeavyDefenseUpgrade();
-                break;
-
-            case PowerUpsType.UPGRADE_DEFENSE3:
-                _defenseManager.EnableLognshotDefenseUpgrade();
+            case PowerUpsType.UPGRADE_DEFENSES_RATE_OF_FIRE:
+                _defenseManager.IncreaseDefensesRateOfFireBy(powerUpData.incrementValue);
                 break;
         }
     }

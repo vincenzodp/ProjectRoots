@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class DefenseManager : MonoBehaviour
 {
-    private int _baseDefenseMaxLevel = 1;
-    private int _heavyDefenseMaxLevel = 1;
-    private int _longhsotDefenseMaxLevel = 1;
-
     public void IncreaseDefensesDamageBy(float percentage)
     {
 
     }
 
-    public void EnableBaseDefenseUpgrade()
+    public void IncreaseDefensesRateOfFireBy(float percentage)
     {
-        _baseDefenseMaxLevel++;
-    }
-    public void EnableHeavyDefenseUpgrade()
-    {
-        _heavyDefenseMaxLevel++;
-    }
-    public void EnableLognshotDefenseUpgrade()
-    {
-        _longhsotDefenseMaxLevel++;
+
     }
 }
