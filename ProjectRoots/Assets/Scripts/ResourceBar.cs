@@ -14,7 +14,7 @@ public class ResourceBar : MonoBehaviour
     [SerializeField] ParticleSystem fireworks;
 
     int maximumResourceAllowed;
-
+    bool GameOver;
     float resourceTimer;
 
 
@@ -22,6 +22,7 @@ public class ResourceBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameOver = false;
         slider.value = 0;
         resourceTimer = resourceInterval;
         maximumResourceAllowed = (int)slider.maxValue;
@@ -58,14 +59,12 @@ public class ResourceBar : MonoBehaviour
                 Destroy(enemy, 1f);
             }
         }
-
-
     }
 
 
     public void IncreaseResource(int amount)
     {
-        if (amount > 0)
+        if (amount > 0 && GameOver == false)
         {
             slider.value += amount;
 
@@ -87,6 +86,7 @@ public class ResourceBar : MonoBehaviour
             if (slider.value < 0)
             {
                 slider.value = 0;
+                GameOver = true;
             }
 
             resourceText.text = "$" + slider.value.ToString();
