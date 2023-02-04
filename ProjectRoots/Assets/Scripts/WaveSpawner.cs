@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,68 +7,202 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
-    //public Transform spawnPoint;
-    //public Transform spawnPoint2;
-    public Transform[] enemyPrefab;
 
-    [SerializeField]
-    public float countdown = 2f;
+    //public Transform[] enemyPrefab;
 
-    [SerializeField]
-    public float cooldown = 5f;
 
-    [SerializeField]
-    private int waveIndex = 0;
+    [SerializeField] private float timeToStart = 1f;
+
+    [SerializeField] private float _intervalBetweenWaves = 10f;
+
+    [SerializeField] private float _intervalBetweenWavesDecrementValue = 2.5f;
+
+    //[SerializeField]
+    //public float countdown = 2f;
+
+    //[SerializeField]
+    //public float cooldown = 5f;
+
+    //[SerializeField]
+    //private int waveIndex = 0;
+
+    private float _elapsedTime;
+
+    private bool _startSpawning = false;
+
+
+    [Serializable]
+    private struct WavesPerLevel
+    {
+        public int levelIndex;
+        public List<Wave> waves;
+    }
+
+    [SerializeField] private List<WavesPerLevel> _wavesPerLevel;
+
+
+    [Serializable]
+    private class Wave 
+    {
+        [Serializable]
+        public struct EnemyPresence
+        {
+            public GameObject enemyPrefab;
+            public int minNumberInWave;
+            public int maxNumberInWave;
+        }
+
+        public List<EnemyPresence> enemiesInWave;
+
+        public float intervalBetweenEnemies = 1f;
+
+        private List<GameObject> enemiesQueue = new List<GameObject>();
+
+        private float elapsedTime = 0;
+
+        private Transform spawnPoint;
+
+        private bool waveCompleted = false;
+
+        protected Wave() { }
+        public Wave(Wave wave)
+        {
+            enemiesInWave = new List<EnemyPresence>(wave.enemiesInWave);
+            intervalBetweenEnemies = wave.intervalBetweenEnemies;
+        }
+
+        public List<GameObject> CreateEnemiesQueue()
+        {
+            List<GameObject> allEnemies = new List<GameObject>();
+            foreach(EnemyPresence enemyPresence in enemiesInWave)
+            {
+                int res = UnityEngine.Random.Range(enemyPresence.minNumberInWave, maxExclusive: enemyPresence.maxNumberInWave + 1);
+                for (int i = 0; i < res; i++)
+                    allEnemies.Add(enemyPresence.enemyPrefab);
+            }
+
+            //List<GameObject> enemiesQueue = new List<GameObject>();
+            for(int i = 0; i < allEnemies.Count; i++)
+            {
+                int res = UnityEngine.Random.Range(0, allEnemies.Count);
+                enemiesQueue.Add(allEnemies[res]);
+                allEnemies.RemoveAt(res);
+            }
+
+            return enemiesQueue;
+        }
+
+        public void StartSpawnAt(Transform at)
+        {
+            spawnPoint = at;
+            SpawnNextEnemy();
+        }
+
+        private void SpawnNextEnemy()
+        {
+            if(enemiesQueue.Count == 0)
+            {
+                waveCompleted = true;
+                return;
+            }
+
+            Instantiate(enemiesQueue.First(), spawnPoint.position, spawnPoint.rotation);
+            enemiesQueue.RemoveAt(0);
+        }
+
+        public void UpdateWave(float deltaTime)
+        {
+            if (waveCompleted) return;
+
+            if(elapsedTime > intervalBetweenEnemies)
+            {
+                SpawnNextEnemy();
+                elapsedTime = 0;
+            }
+            else
+            {
+                elapsedTime += deltaTime;
+            }
+        }
+
+        public bool Completed()
+        {
+            return waveCompleted;
+        }
+    }
+
+    private Wave _currentLeftWave;
+
+    private Wave _currentRightWave;
+
+    private void Awake()
+    {
+        //GameManager.Instance.onRootUnlocked += OnNewRootUnlocked;
+    }
+
+    private void OnNewRootUnlocked(TreeRootNode treeRootNodeUnlocked)
+    {
+        if(treeRootNodeUnlocked.earningType == TreeRootNode.EarningType.FixedValue)
+        {
+            NewWaveLevel();
+        }
+    }
+
+    private void NewWaveLevel()
+    {
+        _wavesPerLevel.RemoveAt(0);
+    }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (countdown <= 0f)
+        if (_startSpawning) 
         {
-            StartCoroutine(SpawnWave());
-            countdown = cooldown;
+            _currentLeftWave.UpdateWave(Time.deltaTime);
+            _currentRightWave.UpdateWave(Time.deltaTime);
+
+            if (_currentLeftWave.Completed())
+            {
+                SpawnNewLeftWave();
+            }
+
+            if (_currentRightWave.Completed())
+            {
+                SpawnNewRightWave();
+            }
+
             return;
         }
-        countdown -= Time.deltaTime;
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-    }
-
-    void SpawnEnemy()
-    {
-        if (waveIndex < 3)
+        
+        if (_elapsedTime > timeToStart)
         {
-            for (int i = 0; i < 2; i++)
-            {
-                Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[i].position, spawnPoints[i].rotation);
-            }
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[0].position, spawnPoints[0].rotation);
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[1].position, spawnPoints[1].rotation);
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint.position, spawnPoint.rotation);           
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint2.position, spawnPoint2.rotation);
+            SpawnNewLeftWave();
+            SpawnNewRightWave();
+            _startSpawning = true;
         }
         else
         {
-            for (int i = 0; i < 2; i++)
-            {
-                Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoints[i].position, spawnPoints[i].rotation);
-            }
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[0].position, spawnPoints[0].rotation);
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length - 1)], spawnPoints[1].position, spawnPoints[1].rotation);
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint.position, spawnPoint.rotation);
-            //Instantiate(enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)], spawnPoint2.position, spawnPoint2.rotation);
+            _elapsedTime += Time.deltaTime;
         }
     }
 
-    IEnumerator SpawnWave()
+    void SpawnNewLeftWave()
     {
-        //Debug.Log("Enemy Spawned!");
+        int ranLeft = UnityEngine.Random.Range(0, _wavesPerLevel.First().waves.Count);
 
-        for (int i = 0; i < waveIndex; i++)
-        {
-            SpawnEnemy();
-            yield return new WaitForSeconds(1f);
-        }
-        waveIndex++;
+        _currentLeftWave = new Wave(_wavesPerLevel.First().waves[ranLeft]);
+        _currentLeftWave.CreateEnemiesQueue();
+        _currentLeftWave.StartSpawnAt(at: spawnPoints[0]);
+    }
+
+
+    void SpawnNewRightWave()
+    {
+        int ranRight = UnityEngine.Random.Range(0, _wavesPerLevel.First().waves.Count);
+
+        _currentRightWave = new Wave(_wavesPerLevel.First().waves[ranRight]);
+        _currentRightWave.CreateEnemiesQueue();
+        _currentRightWave.StartSpawnAt(at: spawnPoints[1]);
     }
 }

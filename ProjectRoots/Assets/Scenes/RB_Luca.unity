@@ -421,12 +421,25 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 616561877}
   - {fileID: 1039352041}
-  enemyPrefab:
-  - {fileID: 3794779856223019536, guid: afec44b662da7a9439960908fd147d8a, type: 3}
-  - {fileID: 460233795014533484, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
-  countdown: 0.5
-  cooldown: 10
-  waveIndex: 0
+  timeToStart: 1
+  _intervalBetweenWaves: 10
+  _intervalBetweenWavesDecrementValue: 2.5
+  _wavesPerLevel:
+  - levelIndex: 1
+    waves:
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 4603264313011697834, guid: afec44b662da7a9439960908fd147d8a, type: 3}
+        minNumberInWave: 1
+        maxNumberInWave: 4
+      - enemyPrefab: {fileID: 948223905045740502, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
+        minNumberInWave: 0
+        maxNumberInWave: 1
+      intervalBetweenEnemies: 4
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 4603264313011697834, guid: afec44b662da7a9439960908fd147d8a, type: 3}
+        minNumberInWave: 1
+        maxNumberInWave: 6
+      intervalBetweenEnemies: 4
 --- !u!1 &426478600
 GameObject:
   m_ObjectHideFlags: 0

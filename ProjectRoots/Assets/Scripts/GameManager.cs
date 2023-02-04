@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 {
     public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
     public event OnRootunlocked onRootUnlocked;
-
     public static GameManager Instance { get; private set; }
 
     //Handful sub-systems references
@@ -63,8 +62,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void NewRootNodeBought(TreeRootNode unclokedRootNode)
+    public void NewRootNodeBought(TreeRootNode unlockedRootNode)
     {
-        onRootUnlocked?.Invoke(unclokedRootNode);
+        onRootUnlocked?.Invoke(unlockedRootNode);
+
     }
 }
