@@ -84,25 +84,32 @@ public class PowerUpController : MonoBehaviour
         Vector3 finalScale = initialScale + scaleIncrement;
         float elapsedTime = 0;
 
-        while(elapsedTime < timeToScale)
+        Color initialColor = _powerUpSpriteRenderer.color;
+        Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
+
+        while (elapsedTime < timeToScale)
         {
             Vector3 newScale = Vector3.Lerp(initialScale, finalScale, elapsedTime / timeToScale);
             transform.localScale = newScale;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
 
-        Color initialColor = _powerUpSpriteRenderer.color;
-        Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
-        elapsedTime = 0;
-
-        while (elapsedTime < timeToFade)
-        {
-            Color newColor = Color.Lerp(initialColor, finalColor, elapsedTime / timeToFade);
+            Color newColor = Color.Lerp(initialColor, finalColor, elapsedTime / timeToScale);
             _powerUpSpriteRenderer.color = newColor;
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        //Color initialColor = _powerUpSpriteRenderer.color;
+        //Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
+        //elapsedTime = 0;
+
+        //while (elapsedTime < timeToFade)
+        //{
+        //    Color newColor = Color.Lerp(initialColor, finalColor, elapsedTime / timeToFade);
+        //    _powerUpSpriteRenderer.color = newColor;
+        //    elapsedTime += Time.deltaTime;
+        //    yield return null;
+        //}
     }
     
     #endregion
