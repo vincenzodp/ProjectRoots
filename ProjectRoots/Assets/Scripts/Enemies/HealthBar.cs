@@ -11,8 +11,8 @@ public class HealthBar : MonoBehaviour
 
     public void Awake()
     {
-        canvas.enabled = false;
-        slider.enabled = false;
+        //canvas.enabled = false;
+        //slider.enabled = false;
     }
 
     public void SetHealthBarMaxHealth()
