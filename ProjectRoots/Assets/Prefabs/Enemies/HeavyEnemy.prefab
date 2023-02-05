@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8204062300336929019}
   - component: {fileID: 9150491702828916750}
   m_Layer: 0
-  m_Name: Barbarian
+  m_Name: HeavyEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

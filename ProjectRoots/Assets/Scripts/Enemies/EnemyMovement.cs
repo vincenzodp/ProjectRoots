@@ -52,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
     public void SpawnFromLeft()
     {
         Vector3 center = (Spawn.position + target.position) * 0.5F;
-        center -= new Vector3(0, 9, 0);
+        center -= new Vector3(0, 12, 0);
         Vector3 riseRelCenter = Spawn.position - center;
         Vector3 setRelCenter = target.position - center;
         float fracComplete = (Time.time - startTime) * enemy.speed / 150f;
