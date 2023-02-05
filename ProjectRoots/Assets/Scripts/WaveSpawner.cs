@@ -8,23 +8,12 @@ public class WaveSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
 
-    //public Transform[] enemyPrefab;
-
 
     [SerializeField] private float timeToStart = 1f;
 
     [SerializeField] private float _intervalBetweenWaves = 10f;
 
     [SerializeField] private float _intervalBetweenWavesDecrementValue = 2.5f;
-
-    //[SerializeField]
-    //public float countdown = 2f;
-
-    //[SerializeField]
-    //public float cooldown = 5f;
-
-    //[SerializeField]
-    //private int waveIndex = 0;
 
     private float _elapsedTime;
 
@@ -64,6 +53,7 @@ public class WaveSpawner : MonoBehaviour
 
         private bool waveCompleted = false;
 
+        private bool _stop = false;
         protected Wave() { }
         public Wave(Wave wave)
         {
@@ -112,6 +102,8 @@ public class WaveSpawner : MonoBehaviour
 
         public void UpdateWave(float deltaTime)
         {
+            if (_stop) return;
+
             if (waveCompleted) return;
 
             if(elapsedTime > intervalBetweenEnemies)
@@ -135,9 +127,17 @@ public class WaveSpawner : MonoBehaviour
 
     private Wave _currentRightWave;
 
+    private bool _disabled = false;
+
     private void Start()
     {
         GameManager.Instance.onRootUnlocked += OnNewRootUnlocked;
+        GameManager.Instance.onGameOver += onGameOver;
+    }
+
+    private void onGameOver()
+    {
+        _disabled = true;
     }
 
     private void OnNewRootUnlocked(TreeRootNode treeRootNodeUnlocked)
@@ -157,6 +157,8 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_disabled) return;
+
         if (_startSpawning) 
         {
             _currentLeftWave.UpdateWave(Time.deltaTime);

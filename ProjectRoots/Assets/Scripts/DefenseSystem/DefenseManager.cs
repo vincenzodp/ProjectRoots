@@ -37,6 +37,13 @@ public class DefenseManager : MonoBehaviour
         _leftSideCollisionDetector.onNewEnemyEntered += newEnemyFoundAtLeft;
         _rightSideCollisionDetector.onNewEnemyEntered += newEnemyFoundAtRight;
 
+
+    }
+
+   
+    private void Start()
+    {
+        NextDefensesBloom();
         GameManager.Instance.onGameOver += onGameOver;
 
     }
@@ -77,11 +84,6 @@ public class DefenseManager : MonoBehaviour
         StartCoroutine(DefenseBloom(_rightDefenses[_defesesBloomIndex], _bloomTime));
 
         _defesesBloomIndex++;
-    }
-
-    private void Start()
-    {
-        NextDefensesBloom();
     }
 
     public void IncreaseDefensesDamageBy(float percentage)
