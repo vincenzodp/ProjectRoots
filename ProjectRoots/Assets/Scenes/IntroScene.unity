@@ -3720,6 +3720,19 @@ PrefabInstance:
       propertyPath: Meteor
       value: 
       objectReference: {fileID: 1657772890}
+    - target: {fileID: 5131909382422488802, guid: 2888f5e3aa1f7c947a81a217ea0031d4, type: 3}
+      propertyPath: m_text
+      value: 'PLANT_A_GEDDON
+
+        This planet looks good
+
+        Let''s eat
+        it!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131909382422488802, guid: 2888f5e3aa1f7c947a81a217ea0031d4, type: 3}
+      propertyPath: m_fontSize
+      value: 36.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5131909382474404257, guid: 2888f5e3aa1f7c947a81a217ea0031d4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
