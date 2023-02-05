@@ -8,7 +8,7 @@ public class DefenseManager : MonoBehaviour
 
     [Header("Defenses")]
     [SerializeField] List<Launcher> _leftDefenses; // They should be placed from the lowest to the highest
-    
+
     [SerializeField] List<Launcher> _rightDefenses; // They should be placed from the lowest to the highest
 
     [Header("Colliders")]
@@ -28,7 +28,7 @@ public class DefenseManager : MonoBehaviour
         {
             launcher.transform.localScale = Vector3.zero;
         }
-        
+
         foreach (Launcher launcher in _rightDefenses)
         {
             launcher.transform.localScale = Vector3.zero;
@@ -40,12 +40,11 @@ public class DefenseManager : MonoBehaviour
 
     }
 
-   
+
     private void Start()
     {
         NextDefensesBloom();
         GameManager.Instance.onGameOver += onGameOver;
-
     }
 
     private void onGameOver()

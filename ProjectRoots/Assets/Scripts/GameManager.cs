@@ -1,7 +1,7 @@
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 [Singleton]
 [DisallowMultipleComponent]
@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Transform damageSpawnPoint;
     [SerializeField] GameObject damageFeedbackText;
+
+    [SerializeField] GameObject gameOverUI;
 
     public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
     public event OnRootunlocked onRootUnlocked;
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        Instantiate(gameOverUI, Vector3.zero, gameOverUI.transform.rotation);
         onGameOver?.Invoke();
     }
 
@@ -95,5 +98,10 @@ public class GameManager : MonoBehaviour
         var newPosition = damageSpawnPoint.transform.position;
         var feedback = Instantiate(damageFeedbackText, newPosition, damageFeedbackText.transform.rotation);
         feedback.GetComponent<FloatingDamageFeedbackManager>().DisplayDamage(damage);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(0);
     }
 }
