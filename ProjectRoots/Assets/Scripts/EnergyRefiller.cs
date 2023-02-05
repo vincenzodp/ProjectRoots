@@ -17,6 +17,7 @@ public class EnergyRefiller : MonoBehaviour
     public delegate void OnValueBelowZeroOnceHandler();
     public event OnValueBelowZeroOnceHandler OnValueBelowZeroOnce;
     bool isValueBelowZeroNotified = false;
+    bool StopIncreasing = false;
 
     public float FixedEarnedValuePerSecond { get; set; } = 0f;
     public float EarnedValueIncreasePercentage { get; set; } = 0f;
@@ -49,6 +50,7 @@ public class EnergyRefiller : MonoBehaviour
             if (currentValue < 0 && !isValueBelowZeroNotified)
             {
                 isValueBelowZeroNotified = true;
+                StopIncreasing = true;
                 OnValueBelowZeroOnce?.Invoke();
             }
         }
@@ -66,6 +68,12 @@ public class EnergyRefiller : MonoBehaviour
     void Update()
     {
         var valueToIncrease = CalculatedEarnedValuePerSecond * Time.deltaTime;
-        Value += valueToIncrease;
+        if (StopIncreasing == false) {
+            Value += valueToIncrease;
+        }
+        else
+        {
+            Value = 0;
+        }
     }
 }
