@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1557250783}
-  m_IndirectSpecularColor: {r: 0.29981905, g: 0.4301757, b: 0.68702936, a: 1}
+  m_IndirectSpecularColor: {r: 0.29982036, g: 0.43017727, b: 0.68703085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4465,6 +4465,10 @@ PrefabInstance:
     - target: {fileID: 2978512077943296451, guid: 32bb82d6d565fb74bbf2ec47dcd8e818, type: 3}
       propertyPath: m_Name
       value: AlienRoots
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236307300002968597, guid: 32bb82d6d565fb74bbf2ec47dcd8e818, type: 3}
+      propertyPath: earningValue
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9085210246099646254, guid: 32bb82d6d565fb74bbf2ec47dcd8e818, type: 3}
       propertyPath: m_Camera
