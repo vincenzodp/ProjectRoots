@@ -19,25 +19,14 @@ public class EnergyRefiller : MonoBehaviour
     bool isValueBelowZeroNotified = false;
     bool StopIncreasing = false;
 
-    public float FixedEarnedValuePerSecond { get; set; } = 0f;
-    public float EarnedValueIncreasePercentage { get; set; } = 0f;
-    public float EarnedValueTemporaryBonusPercentage { get; set; } = 0f;
-    public float CalculatedEarnedValuePerSecond
-    {
-        get => BaseEarningPerSecond + FixedEarnedValuePerSecond * (1 + EarnedValueIncreasePercentage) * (1 + EarnedValueTemporaryBonusPercentage);
-    }
+    //public float FixedEarnedValuePerSecond { get; set; } = 0f;
+    //public float EarnedValueIncreasePercentage { get; set; } = 0f;
+    //public float CalculatedEarnedValuePerSecond
+    //{
+    //    get => BaseEarningPerSecond + FixedEarnedValuePerSecond * (1 + EarnedValueIncreasePercentage);
+    //}
+    public float CalculatedEarnedValuePerSecond { get; set; }
 
-
-    public void SetTemporaryIncreaseBonus(float bonusPercentage, float secondsLength)
-    {
-        EarnedValueTemporaryBonusPercentage = bonusPercentage;
-        StartCoroutine(ResetBonusAfterSeconds(secondsLength));
-    }
-    IEnumerator ResetBonusAfterSeconds(float secondsLength)
-    {
-        yield return new WaitForSeconds(secondsLength);
-        EarnedValueTemporaryBonusPercentage = 0f;
-    }
 
 
     float currentValue;

@@ -38,9 +38,12 @@ public class TreeRootManager : MonoBehaviour
 
         // Apply bonus
         if (requestingNode.earningType == TreeRootNode.EarningType.FixedValue)
-            energyRefiller.FixedEarnedValuePerSecond += requestingNode.earningValue;
+            energyRefiller.CalculatedEarnedValuePerSecond += requestingNode.earningValue;
         else
-            energyRefiller.EarnedValueIncreasePercentage += requestingNode.earningValue / 100;
+        {
+            var percent = requestingNode.earningValue / 100;
+            energyRefiller.CalculatedEarnedValuePerSecond += energyRefiller.CalculatedEarnedValuePerSecond * percent;
+        }
 
         energyRefiller.MaxValue += requestingNode.maxSizeIncrease;
 
