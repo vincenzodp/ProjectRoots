@@ -37,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
     void AttackEvents()
     {
         EnergyRefiller.Instance.Value -= damage;
-        renderer.material.color = Color.red;
+        //renderer.material.color = Color.red;
 
         Invoke("ResetColor", flashTime);    
     }
