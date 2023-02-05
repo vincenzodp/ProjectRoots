@@ -19,7 +19,15 @@ public class PowerUpController : MonoBehaviour
     [Tooltip("The RootNodes to unlock to use this power up")]
     [SerializeField] List<TreeRootNode> _linkedRootNodes;
 
-    [SerializeField] SpriteRenderer _powerUpSpriteRenderer; 
+    [SerializeField] SpriteRenderer _powerUpSpriteRenderer;
+
+    [Header("Animations")]
+    [Header("Unlock")]
+    [SerializeField] private Vector3 scaleIncrement;
+    [SerializeField] private float timeToScale;
+    [SerializeField] private float timeToFade;
+
+    [SerializeField] private GameObject _vfxUnlockPrefab;
 
     private void Awake()
     {
@@ -62,6 +70,47 @@ public class PowerUpController : MonoBehaviour
     {
         onUnlocked?.Invoke(_powerUpData);
 
+        StartCoroutine(ScaleNFade());
+
         Debug.Log($"Power Up unlocked: {_powerUpData.name}");
     }
+
+
+    #region COROUTINES
+    
+    private IEnumerator ScaleNFade()
+    {
+        Vector3 initialScale = transform.localScale;
+        Vector3 finalScale = initialScale + scaleIncrement;
+        float elapsedTime = 0;
+
+        Color initialColor = _powerUpSpriteRenderer.color;
+        Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
+
+        while (elapsedTime < timeToScale)
+        {
+            Vector3 newScale = Vector3.Lerp(initialScale, finalScale, elapsedTime / timeToScale);
+            transform.localScale = newScale;
+
+            Color newColor = Color.Lerp(initialColor, finalColor, elapsedTime / timeToScale);
+            _powerUpSpriteRenderer.color = newColor;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        //Color initialColor = _powerUpSpriteRenderer.color;
+        //Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
+        //elapsedTime = 0;
+
+        //while (elapsedTime < timeToFade)
+        //{
+        //    Color newColor = Color.Lerp(initialColor, finalColor, elapsedTime / timeToFade);
+        //    _powerUpSpriteRenderer.color = newColor;
+        //    elapsedTime += Time.deltaTime;
+        //    yield return null;
+        //}
+    }
+    
+    #endregion
 }
