@@ -2526,7 +2526,7 @@ GameObject:
   - component: {fileID: 244331458815900074}
   - component: {fileID: 1475062639544290438}
   - component: {fileID: 7524031295366410199}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3829,7 +3829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 244331458815900074}
-  slider: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+  slider: {fileID: 5805614339839209385}
   health: 100
 --- !u!114 &8091569745534607203
 MonoBehaviour:
@@ -4168,6 +4168,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+--- !u!114 &5805614339839209385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+  m_PrefabInstance: {fileID: 7810735629852173895}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5805614339839209386 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}

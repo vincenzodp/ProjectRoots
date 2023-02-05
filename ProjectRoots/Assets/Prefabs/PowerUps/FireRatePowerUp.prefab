@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5425597075104806791}
   - component: {fileID: 5425597075104806784}
   m_Layer: 0
-  m_Name: DamagePowerUp
+  m_Name: FireRatePowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 121dfaab309a8464a8fde2cec4802633, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb57ca2c9a83b0e4c81db88e98a4c9b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb032550f6ce3049bc5ef6e0c652303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _powerUpData: {fileID: 11400000, guid: 038cf8d95b99e7e45a64d8475e861c5f, type: 2}
+  _powerUpData: {fileID: 11400000, guid: dcfcb12d13a30c24793e246f0698c5f8, type: 2}
   _linkedRootNodes:
   - {fileID: 0}
   - {fileID: 0}
