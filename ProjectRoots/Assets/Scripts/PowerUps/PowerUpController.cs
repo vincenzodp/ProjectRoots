@@ -99,6 +99,9 @@ public class PowerUpController : MonoBehaviour
             yield return null;
         }
 
+        _powerUpSpriteRenderer.color = finalColor;
+        Destroy(gameObject);
+
         //Color initialColor = _powerUpSpriteRenderer.color;
         //Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
         //elapsedTime = 0;

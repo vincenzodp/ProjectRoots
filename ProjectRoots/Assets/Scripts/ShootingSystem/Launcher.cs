@@ -101,6 +101,9 @@ public class Launcher : MonoBehaviour
 
     public void EnemyDetected(Enemy potentialTarget)
     {
+
+        if (_disabled) return;
+
         // if there is no target to shoot, the new entered enemy will be the target
         // else, it will be added to the queue, from where will be chosen in future
         if (_shootingTarget == null)
