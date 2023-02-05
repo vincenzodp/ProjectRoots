@@ -19,7 +19,17 @@ public class DefenseManager : MonoBehaviour
     [SerializeField] Vector3 _finalDefensesScale;
     [SerializeField] float _bloomTime;
 
+    [Header("Defenses Stats")]
+    [SerializeField] private float _fireRate;
+    [SerializeField] private float _damage;
+
+
     private int _defesesBloomIndex = 0;
+
+    private List<Enemy> _leftEnemiesQueue = new List<Enemy>();
+    private List<Enemy> _rightEnemiesQueue = new List<Enemy>();
+
+    private float _elapsedTime = 0;
 
     private void Awake()
     {
@@ -47,6 +57,32 @@ public class DefenseManager : MonoBehaviour
         GameManager.Instance.onGameOver += onGameOver;
     }
 
+    private void Update()
+    {
+        //if (_elapsedTime >= _fireRate)
+        //{
+        //    _elapsedTime = 0;
+        //    Shoot();
+        //}
+        //else
+        //{
+        //    _elapsedTime += Time.deltaTime;
+        //}
+    }
+
+    //private void Shoot()
+    //{
+    //    foreach (Launcher launcher in _leftDefenses)
+    //    {
+    //        launcher.Shoot(_damage);
+    //    }
+
+    //    foreach (Launcher launcher in _rightDefenses)
+    //    {
+    //        launcher.Shoot(_damage);
+    //    }
+    //}
+
     private void onGameOver()
     {
         foreach (Launcher launcher in _leftDefenses)
@@ -65,7 +101,13 @@ public class DefenseManager : MonoBehaviour
         foreach (Launcher launcher in _leftDefenses)
         {
             launcher.EnemyDetected(enemy);
+            //launcher.AssignTarget(enemy);
+
         }
+
+        //_leftEnemiesQueue.Add(enemy);
+
+
     }
 
     private void newEnemyFoundAtRight(Enemy enemy)
@@ -73,7 +115,10 @@ public class DefenseManager : MonoBehaviour
         foreach (Launcher launcher in _rightDefenses)
         {
             launcher.EnemyDetected(enemy);
+            //launcher.AssignTarget(enemy);
         }
+
+        //_rightEnemiesQueue.Add(enemy);
     }
 
     public void NextDefensesBloom()
@@ -90,11 +135,14 @@ public class DefenseManager : MonoBehaviour
         foreach (Launcher launcher in _leftDefenses)
         {
             launcher.IncrementDamageBy(percentage);
+            //_damage += (_damage * percentage / 100);
         }
 
         foreach (Launcher launcher in _rightDefenses)
         {
             launcher.IncrementDamageBy(percentage);
+            //_fireRate += (_fireRate * percentage / 100);
+
         }
     }
 

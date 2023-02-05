@@ -129,6 +129,8 @@ public class WaveSpawner : MonoBehaviour
 
     private bool _disabled = false;
 
+    [SerializeField] private int _wavePerLevelIndex = 0;
+
     private void Start()
     {
 
@@ -152,7 +154,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void NewWaveLevel()
     {
-        _wavesPerLevel.RemoveAt(0);
+        _wavePerLevelIndex++;
+        //_wavesPerLevel.RemoveAt(0);
     }
 
 
@@ -193,9 +196,9 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnNewLeftWave()
     {
-        int ranLeft = UnityEngine.Random.Range(0, _wavesPerLevel.First().waves.Count);
+        int ranLeft = UnityEngine.Random.Range(0, _wavesPerLevel[_wavePerLevelIndex].waves.Count);
 
-        _currentLeftWave = new Wave(_wavesPerLevel.First().waves[ranLeft]);
+        _currentLeftWave = new Wave(_wavesPerLevel[_wavePerLevelIndex].waves[ranLeft]);
         _currentLeftWave.CreateEnemiesQueue();
         _currentLeftWave.StartSpawnAt(at: spawnPoints[0]);
     }
@@ -203,9 +206,9 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnNewRightWave()
     {
-        int ranRight = UnityEngine.Random.Range(0, _wavesPerLevel.First().waves.Count);
+        int ranRight = UnityEngine.Random.Range(0, _wavesPerLevel[_wavePerLevelIndex].waves.Count);
 
-        _currentRightWave = new Wave(_wavesPerLevel.First().waves[ranRight]);
+        _currentRightWave = new Wave(_wavesPerLevel[_wavePerLevelIndex].waves[ranRight]);
         _currentRightWave.CreateEnemiesQueue();
         _currentRightWave.StartSpawnAt(at: spawnPoints[1]);
     }

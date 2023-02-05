@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,14 +28,25 @@ public class Launcher : MonoBehaviour
 
     private bool _disabled = true;
 
-    private void Shoot()
+    public void Shoot()
     {
+        if (_disabled) return;
+
         Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, _damage);
         
         if((_shootingTarget.getHealth() - _damage) <= 0)
         {
             UpdateTarget();
         }
+    }
+
+    public void Shoot(float damage)
+    {
+        if (_disabled) return;
+
+        if (_shootingTarget == null) return;
+
+        Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, damage);
     }
 
 
@@ -86,6 +98,11 @@ public class Launcher : MonoBehaviour
 
         _shootingTarget = nextTarget;
         _enemiesQueue.Remove(nextTarget);
+    }
+
+    internal void AssignTarget(Enemy enemy)
+    {
+        _shootingTarget = enemy;
     }
 
     public void DisableDefense()
