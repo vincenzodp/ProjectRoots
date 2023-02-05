@@ -51,14 +51,17 @@ public abstract class Projectile : MonoBehaviour
         Vector3 center = (_spawnerTransform.position + _destinationTarget.position) * 0.5F;
 
 
-        if (_spawnerTransform.position.x < 0)
-        {
-            center -= new Vector3(0, 9, 0);
-        }
-        else
-        {
-            center -= new Vector3(0, 12, 0);
-        }
+        //if (_spawnerTransform.position.x < 0)
+        //{
+        //    center -= new Vector3(0, 9, 0);
+        //}
+        //else
+        //{
+        //    center -= new Vector3(0, 12, 0);
+        //}
+
+        center -= new Vector3(0, 12, 0);
+
 
 
         Vector3 riseRelCenter = _spawnerTransform.position  - center;

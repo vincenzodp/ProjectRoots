@@ -2325,6 +2325,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000014111722898, guid: b9fd96550c6ef8c48ac42fffcad3eeb0, type: 3}
   m_PrefabInstance: {fileID: 1377691753}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1408968733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2705294741006940721, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
+  m_PrefabInstance: {fileID: 1837392465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1420515073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2511,11 +2516,11 @@ PrefabInstance:
     - target: {fileID: 5067613005605333244, guid: 9c055cca91087034ab79c7ad324700d0, type: 3}
       propertyPath: _wavesPerLevel.Array.data[0].waves.Array.data[0].enemiesInWave.Array.data[1].enemyPrefab
       value: 
-      objectReference: {fileID: 4603264313011697834, guid: afec44b662da7a9439960908fd147d8a, type: 3}
+      objectReference: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
     - target: {fileID: 5067613005605333244, guid: 9c055cca91087034ab79c7ad324700d0, type: 3}
       propertyPath: _wavesPerLevel.Array.data[0].waves.Array.data[1].enemiesInWave.Array.data[0].enemyPrefab
       value: 
-      objectReference: {fileID: 4603264313011697834, guid: afec44b662da7a9439960908fd147d8a, type: 3}
+      objectReference: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
     - target: {fileID: 5067613005605333244, guid: 9c055cca91087034ab79c7ad324700d0, type: 3}
       propertyPath: _wavesPerLevel.Array.data[1].waves.Array.data[0].enemiesInWave.Array.data[0].enemyPrefab
       value: 
@@ -2523,7 +2528,7 @@ PrefabInstance:
     - target: {fileID: 5067613005605333244, guid: 9c055cca91087034ab79c7ad324700d0, type: 3}
       propertyPath: _wavesPerLevel.Array.data[1].waves.Array.data[0].enemiesInWave.Array.data[1].enemyPrefab
       value: 
-      objectReference: {fileID: 4603264313011697834, guid: afec44b662da7a9439960908fd147d8a, type: 3}
+      objectReference: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
     - target: {fileID: 5067613005605333244, guid: 9c055cca91087034ab79c7ad324700d0, type: 3}
       propertyPath: _wavesPerLevel.Array.data[1].waves.Array.data[1].enemiesInWave.Array.data[0].enemyPrefab
       value: 
@@ -2737,15 +2742,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2787,7 +2792,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8206136422733816654, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
   m_PrefabInstance: {fileID: 1462203686}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1590606333}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f1e0d15a52f33542a7e0cc9027c94d7, type: 3}
@@ -3574,6 +3579,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000012136973678, guid: 3ee6164a9d9cf974ca3e2e31c3e866a0, type: 3}
   m_PrefabInstance: {fileID: 907047125}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1590606333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2705294741006940721, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
+  m_PrefabInstance: {fileID: 1462203686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1590606335
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590606333}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1624474279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4094,15 +4120,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2880370472904398094, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4144,12 +4170,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8206136422733816654, guid: d9c50ff5d5aa4fe4b9340959dd66c881, type: 3}
   m_PrefabInstance: {fileID: 1837392465}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1408968733}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f1e0d15a52f33542a7e0cc9027c94d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1837392469
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408968733}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1851153886
 PrefabInstance:
   m_ObjectHideFlags: 0
