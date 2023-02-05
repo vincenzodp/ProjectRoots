@@ -147,6 +147,26 @@ MonoBehaviour:
   _intervalBetweenWaves: 10
   _intervalBetweenWavesDecrementValue: 2.5
   _wavesPerLevel:
+  - levelIndex: 0
+    waves:
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 948223905045740502, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
+        minNumberInWave: 0
+        maxNumberInWave: 1
+      - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
+        minNumberInWave: 2
+        maxNumberInWave: 4
+      intervalBetweenEnemies: 3
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
+        minNumberInWave: 4
+        maxNumberInWave: 6
+      intervalBetweenEnemies: 3
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
+        minNumberInWave: 3
+        maxNumberInWave: 6
+      intervalBetweenEnemies: 3
   - levelIndex: 1
     waves:
     - enemiesInWave:
@@ -156,24 +176,50 @@ MonoBehaviour:
       - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
         minNumberInWave: 1
         maxNumberInWave: 2
-      intervalBetweenEnemies: 5
+      intervalBetweenEnemies: 3
     - enemiesInWave:
       - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
         minNumberInWave: 2
         maxNumberInWave: 5
-      intervalBetweenEnemies: 6
+      intervalBetweenEnemies: 3
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
+        minNumberInWave: 3
+        maxNumberInWave: 6
+      intervalBetweenEnemies: 3
   - levelIndex: 2
     waves:
     - enemiesInWave:
       - enemyPrefab: {fileID: 948223905045740502, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
-        minNumberInWave: 0
-        maxNumberInWave: 1
+        minNumberInWave: 4
+        maxNumberInWave: 6
       - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
         minNumberInWave: 1
         maxNumberInWave: 2
-      intervalBetweenEnemies: 5
+      intervalBetweenEnemies: 3
     - enemiesInWave:
       - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
-        minNumberInWave: 2
-        maxNumberInWave: 5
-      intervalBetweenEnemies: 6
+        minNumberInWave: 10
+        maxNumberInWave: 15
+      intervalBetweenEnemies: 2
+  - levelIndex: 3
+    waves:
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 948223905045740502, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
+        minNumberInWave: 7
+        maxNumberInWave: 10
+      - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
+        minNumberInWave: 3
+        maxNumberInWave: 4
+      intervalBetweenEnemies: 2
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
+        minNumberInWave: 15
+        maxNumberInWave: 18
+      intervalBetweenEnemies: 4
+    - enemiesInWave:
+      - enemyPrefab: {fileID: 948223905045740502, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
+        minNumberInWave: 10
+        maxNumberInWave: 12
+      intervalBetweenEnemies: 5
+  _wavePerLevelIndex: 0
