@@ -28,26 +28,32 @@ public class Launcher : MonoBehaviour
 
     private bool _disabled = true;
 
+    private DefenseManager _defenseManager;
+    private void Start()
+    {
+        _defenseManager = FindObjectOfType<DefenseManager>();
+    }
+
     public void Shoot()
     {
         if (_disabled) return;
 
         Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, _damage);
         
-        if((_shootingTarget.getHealth() - _damage) <= 0)
+        if(((_shootingTarget.getHealth() - _damage) / _defenseManager.GetBloomIndex()) <= 0)
         {
             UpdateTarget();
         }
     }
 
-    public void Shoot(float damage)
-    {
-        if (_disabled) return;
+    //public void Shoot(float damage)
+    //{
+    //    if (_disabled) return;
 
-        if (_shootingTarget == null) return;
+    //    if (_shootingTarget == null) return;
 
-        Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, damage);
-    }
+    //    Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, damage);
+    //}
 
 
     private void Update()

@@ -166,7 +166,10 @@ public class DefenseManager : MonoBehaviour
     }
 
 
-
+    public int GetBloomIndex()
+    {
+        return _defesesBloomIndex;
+    }
 
     #region COROUTINES
 
