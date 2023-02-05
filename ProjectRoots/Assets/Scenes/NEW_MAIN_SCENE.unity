@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1557250783}
-  m_IndirectSpecularColor: {r: 0.29981905, g: 0.4301757, b: 0.68702936, a: 1}
+  m_IndirectSpecularColor: {r: 0.29982036, g: 0.43017727, b: 0.68703085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4070,6 +4070,63 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &1608934841
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1642.8198
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 925.5403
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.724932
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552187, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557142202813552189, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
+      propertyPath: m_Name
+      value: music
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3d23405903099b47897eb65f0d35bc9, type: 3}
 --- !u!1001 &1624474279
 PrefabInstance:
   m_ObjectHideFlags: 0
