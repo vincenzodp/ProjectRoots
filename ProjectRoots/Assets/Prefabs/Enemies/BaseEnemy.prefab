@@ -4046,6 +4046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4392383852657822188, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4165,6 +4169,14 @@ PrefabInstance:
     - target: {fileID: 4392383853739541008, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383853739541015, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383854216635845, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
