@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5552c8c1ced16a148b1487fbb5708566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageSpawnPoint: {fileID: 0}
+  damageFeedbackText: {fileID: 1157055452664288747, guid: 0d85ddb6b3f486a4d9963d1fe7b65e56, type: 3}
 --- !u!114 &170707130
 MonoBehaviour:
   m_ObjectHideFlags: 0

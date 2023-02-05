@@ -5,9 +5,11 @@ using UnityEngine;
 
 [Singleton]
 [DisallowMultipleComponent]
-[RequireComponent(typeof(EnergyRefiller))]
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Transform damageSpawnPoint;
+    [SerializeField] GameObject damageFeedbackText;
+
     public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
     public event OnRootunlocked onRootUnlocked;
 
@@ -75,9 +77,7 @@ public class GameManager : MonoBehaviour
 
     void EnergyBelowZeroEmitted()
     {
-        Debug.Log("MORTE!!!");
         GameOver();
-
     }
 
     private void GameOver()
@@ -88,5 +88,12 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         EnergyRefiller.Instance.OnValueBelowZeroOnce -= EnergyBelowZeroEmitted;
+    }
+
+    public void DisplayDamage(float damage)
+    {
+        var newPosition = damageSpawnPoint.transform.position;
+        var feedback = Instantiate(damageFeedbackText, newPosition, damageFeedbackText.transform.rotation);
+        feedback.GetComponent<FloatingDamageFeedbackManager>().DisplayDamage(damage);
     }
 }
