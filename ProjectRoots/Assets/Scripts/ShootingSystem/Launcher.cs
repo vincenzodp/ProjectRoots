@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,15 +28,32 @@ public class Launcher : MonoBehaviour
 
     private bool _disabled = true;
 
-    private void Shoot()
+    private DefenseManager _defenseManager;
+    private void Start()
     {
+        _defenseManager = FindObjectOfType<DefenseManager>();
+    }
+
+    public void Shoot()
+    {
+        if (_disabled) return;
+
         Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, _damage);
         
-        if((_shootingTarget.getHealth() - _damage) <= 0)
+        if(((_shootingTarget.getHealth() - _damage) / _defenseManager.GetBloomIndex()) <= 0)
         {
             UpdateTarget();
         }
     }
+
+    //public void Shoot(float damage)
+    //{
+    //    if (_disabled) return;
+
+    //    if (_shootingTarget == null) return;
+
+    //    Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, damage);
+    //}
 
 
     private void Update()
@@ -88,6 +106,11 @@ public class Launcher : MonoBehaviour
         _enemiesQueue.Remove(nextTarget);
     }
 
+    internal void AssignTarget(Enemy enemy)
+    {
+        _shootingTarget = enemy;
+    }
+
     public void DisableDefense()
     {
         _disabled = true;
@@ -101,6 +124,9 @@ public class Launcher : MonoBehaviour
 
     public void EnemyDetected(Enemy potentialTarget)
     {
+
+        if (_disabled) return;
+
         // if there is no target to shoot, the new entered enemy will be the target
         // else, it will be added to the queue, from where will be chosen in future
         if (_shootingTarget == null)

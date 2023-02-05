@@ -99,17 +99,8 @@ public class PowerUpController : MonoBehaviour
             yield return null;
         }
 
-        //Color initialColor = _powerUpSpriteRenderer.color;
-        //Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0);
-        //elapsedTime = 0;
-
-        //while (elapsedTime < timeToFade)
-        //{
-        //    Color newColor = Color.Lerp(initialColor, finalColor, elapsedTime / timeToFade);
-        //    _powerUpSpriteRenderer.color = newColor;
-        //    elapsedTime += Time.deltaTime;
-        //    yield return null;
-        //}
+        _powerUpSpriteRenderer.color = finalColor;
+        Destroy(gameObject);
     }
     
     #endregion
