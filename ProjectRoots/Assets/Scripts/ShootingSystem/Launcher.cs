@@ -110,6 +110,7 @@ public class Launcher : MonoBehaviour
         else
         {
             _enemiesQueue.Add(potentialTarget);
+            //UpdateTarget();
         }
     }
 
