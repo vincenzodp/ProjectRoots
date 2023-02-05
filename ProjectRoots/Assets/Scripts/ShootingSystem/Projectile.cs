@@ -48,7 +48,7 @@ public abstract class Projectile : MonoBehaviour
             return;
         }
 
-        Vector3 center = (_spawnerTransform.position + _destinationTarget.position) * 0.5F;
+        Vector3 center = (_spawnerTransform.position + _destinationTarget.position) * 0.9F;
 
 
         //if (_spawnerTransform.position.x < 0)
