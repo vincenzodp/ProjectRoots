@@ -61,12 +61,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4161422515588915637, guid: 2e1cf3c4410e3164fb6d9cd1355c278c, type: 3}
       propertyPath: m_Name
-      value: PowerUpDamage
+      value: PowerUpDamage Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5425907673884862254, guid: 2e1cf3c4410e3164fb6d9cd1355c278c, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 121dfaab309a8464a8fde2cec4802633, type: 3}
+    - target: {fileID: 7143964583084094971, guid: 2e1cf3c4410e3164fb6d9cd1355c278c, type: 3}
+      propertyPath: _powerUpData
+      value: 
+      objectReference: {fileID: 11400000, guid: 038cf8d95b99e7e45a64d8475e861c5f, type: 2}
     m_RemovedComponents:
     - {fileID: 4161422515588915634, guid: 2e1cf3c4410e3164fb6d9cd1355c278c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2e1cf3c4410e3164fb6d9cd1355c278c, type: 3}

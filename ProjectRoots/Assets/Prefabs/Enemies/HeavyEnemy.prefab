@@ -3595,7 +3595,7 @@ GameObject:
   - component: {fileID: 8501677574117070638}
   - component: {fileID: 5210838015220939039}
   - component: {fileID: 1910687255863420406}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4046,6 +4046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4392383852657822188, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4140,11 +4144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_Value
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_MaxValue
-      value: 300
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392383853739541008, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4153,6 +4161,18 @@ PrefabInstance:
     - target: {fileID: 4392383853739541008, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383853739541008, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383853739541015, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383854216635845, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
@@ -4167,7 +4187,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 9097095927713609536}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 

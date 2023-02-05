@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7955690959620330273, guid: 001f93e150708cd4f98d8ef5f45909a6, type: 3}
-  _fireRate: 2
-  _damage: 0
+  _fireRate: 1.5
+  _damage: 50
   _projectileSpawner: {fileID: 8794547341049224774}
   _shootingTarget: {fileID: 0}
   _enemiesQueue: []

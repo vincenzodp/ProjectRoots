@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 2683866506907310559}
   - component: {fileID: 8824332079066422162}
   - component: {fileID: 5390693854389985459}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3829,7 +3829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 2683866506907310559}
-  slider: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+  slider: {fileID: 6477332496845477402}
   health: 100
 --- !u!114 &8091569745534607203
 MonoBehaviour:
@@ -4046,6 +4046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4392383852657822188, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4088,7 +4092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0021984424
+      value: 0.002198442
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4124,7 +4132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.449997
+      value: 2.600006
       objectReference: {fileID: 0}
     - target: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4150,6 +4158,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4392383853739541008, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4158,6 +4170,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4392383853739541008, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383853739541015, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383854216635845, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
 --- !u!224 &6477332496845477401 stripped
@@ -4165,3 +4189,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
   m_PrefabInstance: {fileID: 7282595758568988660}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6477332496845477402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4392383852657822190, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+  m_PrefabInstance: {fileID: 7282595758568988660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
