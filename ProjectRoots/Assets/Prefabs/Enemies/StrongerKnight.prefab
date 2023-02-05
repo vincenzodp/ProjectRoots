@@ -690,10 +690,10 @@ GameObject:
   - component: {fileID: 5908326153522035934}
   - component: {fileID: 7047240344468425835}
   - component: {fileID: 8917688769124320413}
+  - component: {fileID: 4240829891910405934}
   - component: {fileID: -9189291692279950798}
   - component: {fileID: 2426662472165785683}
   - component: {fileID: -4693137579709239308}
-  - component: {fileID: 4240829891910405934}
   m_Layer: 0
   m_Name: StrongerKnight
   m_TagString: Enemy
@@ -783,6 +783,22 @@ CapsuleCollider:
   m_Height: 2.5463262
   m_Direction: 1
   m_Center: {x: 0, y: 0.7731631, z: 0}
+--- !u!54 &4240829891910405934
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697704606351331939}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &-9189291692279950798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad91fc416c4b984d9f33a7751ed1abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   flashTime: 0
   renderer: {fileID: 0}
 --- !u!114 &2426662472165785683
@@ -824,22 +841,6 @@ MonoBehaviour:
   canvas: {fileID: 4045081134749846182}
   slider: {fileID: 6583759110759445439}
   health: 150
---- !u!54 &4240829891910405934
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4697704606351331939}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &4825026726707360056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,7 +1900,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7470020224551107153}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
