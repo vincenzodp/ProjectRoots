@@ -3831,6 +3831,36 @@ MonoBehaviour:
   canvas: {fileID: 244331458815900074}
   slider: {fileID: 5805614339839209385}
   health: 100
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.8301887, g: 0, b: 0, a: 1}
+    key1: {r: 0.11209334, g: 0.7075472, b: 0.08944463, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  fill: {fileID: 5805614340906017878}
 --- !u!114 &8091569745534607203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4196,3 +4226,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4392383852657822189, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
   m_PrefabInstance: {fileID: 7810735629852173895}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5805614340906017878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4392383853739541009, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+  m_PrefabInstance: {fileID: 7810735629852173895}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,18 +8,20 @@ public class HealthBar : MonoBehaviour
     public Canvas canvas;
     public Slider slider;
     public float health;
+    public Gradient gradient;
+    public Image fill;
 
     public void Awake()
     {
-        //canvas.enabled = false;
-        //slider.enabled = false;
+        canvas.enabled = false;
+        slider.enabled = false;
     }
 
     public void SetHealthBarMaxHealth()
     {
         slider.maxValue = health;
         slider.value = health;
-        //fill.color = gradient.Evaluate(1f);
+        fill.color = gradient.Evaluate(1f);
     }
 
     public void SetHealthBarHealth(float currenHealth)
@@ -28,6 +30,6 @@ public class HealthBar : MonoBehaviour
         canvas.enabled = true;
         slider.enabled = true;
         slider.value = health;
-        //fill.color = gradient.Evaluate(slider.normalizedValue);
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }
