@@ -154,13 +154,13 @@ MonoBehaviour:
         minNumberInWave: 0
         maxNumberInWave: 1
       - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
-        minNumberInWave: 2
-        maxNumberInWave: 4
-      intervalBetweenEnemies: 3
+        minNumberInWave: 1
+        maxNumberInWave: 2
+      intervalBetweenEnemies: 5
     - enemiesInWave:
       - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
-        minNumberInWave: 4
-        maxNumberInWave: 6
+        minNumberInWave: 2
+        maxNumberInWave: 3
       intervalBetweenEnemies: 3
     - enemiesInWave:
       - enemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
