@@ -131,6 +131,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
+
         GameManager.Instance.onRootUnlocked += OnNewRootUnlocked;
         GameManager.Instance.onGameOver += onGameOver;
     }
@@ -138,6 +139,7 @@ public class WaveSpawner : MonoBehaviour
     private void onGameOver()
     {
         _disabled = true;
+
     }
 
     private void OnNewRootUnlocked(TreeRootNode treeRootNodeUnlocked)
