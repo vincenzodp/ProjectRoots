@@ -102,3 +102,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _powerUpSpriteRenderer: {fileID: 5425597075104806791}
+  scaleIncrement: {x: 0.5, y: 0.5, z: 0.5}
+  timeToScale: 0.3
+  timeToFade: 0.4
+  _vfxUnlockPrefab: {fileID: 0}

@@ -8,6 +8,8 @@ public abstract class Projectile : MonoBehaviour
 
     [SerializeField] protected float _speed;
 
+    [SerializeField] ParticleSystem hitVFX;
+
     protected Transform _spawnerTransform;
     
     protected float _totalDamage;
@@ -82,6 +84,10 @@ public abstract class Projectile : MonoBehaviour
         if (collider.gameObject.CompareTag("Enemy") && collider.transform == _destinationTarget)
         {
             collider.gameObject.GetComponent<Enemy>().HitByProjectile(_totalDamage);
+
+            Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
+            
+
             Destroy(gameObject);
         }
     }
