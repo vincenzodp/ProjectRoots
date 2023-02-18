@@ -36,6 +36,8 @@ public class EnemyAttack : MonoBehaviour
 
     void AttackEvents()
     {
+        if (EnergyRefiller.Instance == null || GameManager.Instance == null) return;
+
         EnergyRefiller.Instance.Value -= damage;
         GameManager.Instance.DisplayDamage(damage);
         //renderer.material.color = Color.red;
