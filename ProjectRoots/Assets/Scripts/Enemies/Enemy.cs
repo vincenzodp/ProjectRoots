@@ -9,6 +9,8 @@ public abstract class Enemy : MonoBehaviour
     public float speed;
     public float startHealth;
     public float health;
+    public AudioSource hitaudiosource;
+    public GameObject FloatingDamageFeedbackText;
     //public Gradient gradient;
     //public Image fill;
 
@@ -22,6 +24,7 @@ public abstract class Enemy : MonoBehaviour
     {
         speed = startSpeed;
         health = startHealth;
+        hitaudiosource = GetComponent<AudioSource>();
     }
 
     public void HitByProjectile(float damage)
@@ -55,6 +58,13 @@ public abstract class Enemy : MonoBehaviour
     private void OnDisable()
     {
         GameManager.Instance.onGameOver -= onGameOver;
+    }
+
+    public void CreateFloatingDamageFeedbackText(Vector3 position, int damage)
+    {
+        var newFloatingText = Instantiate(FloatingDamageFeedbackText, position, FloatingDamageFeedbackText.transform.rotation);
+        var floatingTextManager = newFloatingText.GetComponentInChildren<FloatingDamageFeedbackManager>();
+        floatingTextManager.DisplayDamage(damage);
     }
 
     protected virtual void Attack() {}
