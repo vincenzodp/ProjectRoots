@@ -3740,8 +3740,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5333a0e6f226554189e57d9c1e1573f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawn: {fileID: 0}
-  Spawn1: {fileID: 0}
+  leftSpawnPoint: {fileID: 0}
+  rightSpawnPoint: {fileID: 0}
 --- !u!95 &1946825126922847650
 Animator:
   serializedVersion: 5
@@ -4307,6 +4307,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4392383854216635847, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392383854216635847, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 875793d18185b54488d25d2c60111028, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 993aa12d2e18eef468c050f4b5b68738, type: 3}
 --- !u!114 &5805614339839209385 stripped
