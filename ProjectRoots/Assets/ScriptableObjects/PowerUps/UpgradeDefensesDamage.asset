@@ -16,4 +16,4 @@ MonoBehaviour:
   description: 
   sprite: {fileID: 21300000, guid: 121dfaab309a8464a8fde2cec4802633, type: 3}
   type: 1
-  incrementValue: 10
+  incrementValue: 25

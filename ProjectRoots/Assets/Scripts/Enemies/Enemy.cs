@@ -16,6 +16,11 @@ public abstract class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+
         GameManager.Instance.onGameOver += onGameOver;
     }
 
@@ -57,6 +62,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnDisable()
     {
+        if (GameManager.Instance == null) return;
         GameManager.Instance.onGameOver -= onGameOver;
     }
 
