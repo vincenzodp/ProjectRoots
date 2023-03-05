@@ -1483,16 +1483,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582831429563468123, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2582831429563468123, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
 --- !u!4 &1144355499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2582831429563468120, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
   m_PrefabInstance: {fileID: 1144355498}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1144355500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582831429563468123, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
+  m_PrefabInstance: {fileID: 1144355498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a6b7303f2eb1845bb04f81be5f1698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1182492885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013134691540, guid: 5c6e01cf12ba8934f82b4c08f4cb262c, type: 3}
@@ -2969,16 +2979,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582831429563468123, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2582831429563468123, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
 --- !u!4 &1729270830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2582831429563468120, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
   m_PrefabInstance: {fileID: 1729270829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1729270831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582831429563468123, guid: dfd76029b4b3a00448a61a4e6c63d7bd, type: 3}
+  m_PrefabInstance: {fileID: 1729270829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a6b7303f2eb1845bb04f81be5f1698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1781744719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4046,6 +4066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450651738393816}
   - component: {fileID: 3614652008836870968}
+  - component: {fileID: 3614652008836870969}
   m_Layer: 0
   m_Name: AlienTree
   m_TagString: Tree
@@ -4620,6 +4641,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _growthIncrementValue: {x: 0.05, y: 0, z: 0}
   _growthTime: 1
+--- !u!114 &3614652008836870969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147802052194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131d0bc2366f6fa48a9a64634c7ff1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftDefenses:
+  - {fileID: 1729270831}
+  _rightDefenses:
+  - {fileID: 1144355500}
+  _finalDefensesScale: {x: 0, y: 0, z: 0}
+  _bloomTime: 0
+  _leftTargetProviders: []
+  _rightTargetProviders: []
 --- !u!1 &3614652009238665410
 GameObject:
   m_ObjectHideFlags: 0
