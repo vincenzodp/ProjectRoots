@@ -15,18 +15,20 @@ public class Launcher : MonoBehaviour
 
     [SerializeField] protected float _damage;
 
+    [SerializeField] protected float _shootRange;
+
     [Header("Projectile Spawn")]
     [SerializeField] private Transform _projectileSpawner;
 
-    [Header("DEBUG ONLY")]
-
-    [SerializeField] protected Enemy _shootingTarget;
-
-    [SerializeField] private List<Enemy> _enemiesQueue;  
+    [HideInInspector] public bool Disabled { get { return _disabled; } set { _disabled = value; } }
 
     private float _elapsedTime;
 
     private bool _disabled = true;
+
+    private bool _isWaitingForTarget = true;
+
+    private ITarget _targetToShootWhenInRange = null;
 
     private DefenseManager _defenseManager;
     private void Start()
@@ -34,81 +36,85 @@ public class Launcher : MonoBehaviour
         _defenseManager = FindObjectOfType<DefenseManager>();
     }
 
-    public void Shoot()
-    {
-        if (_disabled) return;
 
-        Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, _damage);
-        
-        if(((_shootingTarget.getHealth() - _damage) / _defenseManager.GetBloomIndex()) <= 0)
+    private void AskToShoot()
+    {
+        if(_defenseManager.TryGetTarget(this, out ITarget target))
         {
-            UpdateTarget();
+            if(TargetIsInRange(target))
+            {
+                // Applies the damage to the target before the projectile hits it
+                target.ApplyDamage(_damage);
+
+                // Instantiates and starts the projectile
+                Projectile projectile = Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>();
+                projectile.StartMovement(target);
+
+                    //.GetComponent<Projectile>().Initialize(_projectileSpawner, target.transform, _damage);
+
+
+                // If a target is going to be shot, the launher will no longer wait for a target (until a new one can't be found) 
+                _isWaitingForTarget = false;
+                
+                return;
+            }
+        }
+
+        _isWaitingForTarget = true;
+    }
+
+    public void TryToShootImmediately(ITarget target)
+    {
+        if (target.Targetable())
+        {
+            // Applies the damage to the target before the projectile hits it
+            target.ApplyDamage(_damage);
+
+            // Instantiates and starts the projectile
+            Projectile projectile = Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>();
+            projectile.StartMovement(target);
+
+            // If a target is going to be shot, the launher will no longer wait for a target (until a new one can't be found) 
+            _isWaitingForTarget = false;
+
         }
     }
 
-    //public void Shoot(float damage)
-    //{
-    //    if (_disabled) return;
-
-    //    if (_shootingTarget == null) return;
-
-    //    Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>().Initialize(_projectileSpawner, _shootingTarget.transform, damage);
-    //}
-
+    private bool TargetIsInRange(ITarget target)
+    {
+        return Vector3.Distance(target.GetHitPosition(), transform.position) <= _shootRange;
+    }
 
     private void Update()
     {
         if (_disabled) return;
 
-        if (_shootingTarget == null) return;
-
-        if(_elapsedTime >= _fireRate)
+        if (_isWaitingForTarget)
         {
-            _elapsedTime = 0;
-            Shoot();
+            if(_targetToShootWhenInRange != null)
+            {
+                if (TargetIsInRange(_targetToShootWhenInRange))
+                {
+                    TryToShootImmediately(_targetToShootWhenInRange);
+                    _targetToShootWhenInRange = null;
+                    
+                }
+            }
         }
         else
         {
-            _elapsedTime += Time.deltaTime;
-        }
-    }
-
-    /// <summary>
-    /// Updates the target of the defense
-    /// </summary>
-    private void UpdateTarget() 
-    {
-        //Checks if there are no enemies in queue
-        if(_enemiesQueue.Count == 0)
-        {
-            _shootingTarget = null;
-            _elapsedTime = 0;
-            return;
-        }
-
-        //By default, the first enemy of the queue will be the next target
-        Enemy nextTarget = _enemiesQueue.First();
-
-        float shortestDistanceFromNextTarget = Vector3.Distance(transform.position, nextTarget.transform.position);
-
-        // Checks if there are nearer enemies to the defense, if so, updates the next target 
-        foreach(Enemy enemyInQueue in _enemiesQueue)
-        {
-            float temp = Vector3.Distance(transform.position, enemyInQueue.transform.position);
-            if (temp < shortestDistanceFromNextTarget)
+            if (_elapsedTime >= _fireRate)
             {
-                nextTarget = enemyInQueue;
-                shortestDistanceFromNextTarget = temp;
+                _elapsedTime = 0;
+                AskToShoot();
+            }
+            else
+            {
+                _elapsedTime += Time.deltaTime;
             }
         }
 
-        _shootingTarget = nextTarget;
-        _enemiesQueue.Remove(nextTarget);
-    }
 
-    internal void AssignTarget(Enemy enemy)
-    {
-        _shootingTarget = enemy;
     }
 
     public void DisableDefense()
@@ -122,23 +128,22 @@ public class Launcher : MonoBehaviour
 
     }
 
-    public void EnemyDetected(Enemy potentialTarget)
+    internal void NewTargetFound(ITarget targetToShoot)
     {
+        if (_disabled || !_isWaitingForTarget) return;
 
-        if (_disabled) return;
-
-        // if there is no target to shoot, the new entered enemy will be the target
-        // else, it will be added to the queue, from where will be chosen in future
-        if (_shootingTarget == null)
+        if(TargetIsInRange(targetToShoot))
         {
-            _shootingTarget = potentialTarget;
+            TryToShootImmediately(targetToShoot);
         }
         else
         {
-            _enemiesQueue.Add(potentialTarget);
-            //UpdateTarget();
+            _targetToShootWhenInRange = targetToShoot;
         }
+
     }
+
+
 
     public void IncrementDamageBy(float percentage)
     {
@@ -148,6 +153,11 @@ public class Launcher : MonoBehaviour
     public void IncrementFireRateBy(float percentage)
     {
         _fireRate += (_fireRate * percentage / 100);
+    }
+
+    public float GetDamage()
+    {
+        return _damage;
     }
 
 }

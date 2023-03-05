@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveSpawner : MonoBehaviour
+public class WaveSpawner : MonoBehaviour, ITargetProvider
 {
     public Transform[] spawnPoints;
 
@@ -33,6 +33,8 @@ public class WaveSpawner : MonoBehaviour
     [Serializable]
     private class Wave 
     {
+        public event Action<GameObject, Vector3, Quaternion> OnNewEnemyReady;
+
         [Serializable]
         public struct EnemyPresence
         {
@@ -96,7 +98,8 @@ public class WaveSpawner : MonoBehaviour
                 return;
             }
 
-            Instantiate(enemiesQueue.First(), spawnPoint.position, spawnPoint.rotation);
+            //Instantiate(enemiesQueue.First(), spawnPoint.position, spawnPoint.rotation);
+            OnNewEnemyReady?.Invoke(enemiesQueue.First(), spawnPoint.position, spawnPoint.rotation);
             enemiesQueue.RemoveAt(0);
         }
 
@@ -131,6 +134,21 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] private int _wavePerLevelIndex = -1;
 
+    public event Action<ITarget> OnNewTargetReady;
+
+    event Action<ITarget> ITargetProvider.OnNewTargetReady
+    {
+        add
+        {
+            OnNewTargetReady += value;
+        }
+
+        remove
+        {
+            OnNewTargetReady -= value;
+        }
+    }
+
     private void Start()
     {
         if (GameManager.Instance == null)
@@ -163,7 +181,6 @@ public class WaveSpawner : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         if (_disabled) return;
@@ -204,7 +221,15 @@ public class WaveSpawner : MonoBehaviour
     {
         int ranLeft = UnityEngine.Random.Range(0, _wavesPerLevel[_wavePerLevelIndex].waves.Count);
 
+        if (_currentLeftWave != null)
+        {
+            _currentLeftWave.OnNewEnemyReady -= LeftWave_OnNewEnemyReady;
+        }
+
         _currentLeftWave = new Wave(_wavesPerLevel[_wavePerLevelIndex].waves[ranLeft]);
+        _currentLeftWave.OnNewEnemyReady += LeftWave_OnNewEnemyReady;
+
+
         _currentLeftWave.CreateEnemiesQueue();
         _currentLeftWave.StartSpawnAt(at: spawnPoints[0]);
     }
@@ -214,8 +239,38 @@ public class WaveSpawner : MonoBehaviour
     {
         int ranRight = UnityEngine.Random.Range(0, _wavesPerLevel[_wavePerLevelIndex].waves.Count);
 
+        if(_currentRightWave != null)
+        {
+            _currentRightWave.OnNewEnemyReady -= RightWave_OnNewEnemyReady;
+        }
+
+
         _currentRightWave = new Wave(_wavesPerLevel[_wavePerLevelIndex].waves[ranRight]);
+
+        _currentRightWave.OnNewEnemyReady += RightWave_OnNewEnemyReady;
+
         _currentRightWave.CreateEnemiesQueue();
         _currentRightWave.StartSpawnAt(at: spawnPoints[1]);
+    }
+
+    private void SpawnEnemy(GameObject enemyGO, Vector3 enemyPos, Quaternion enemyRot)
+    {
+        Instantiate(enemyGO, enemyPos, enemyRot);
+
+    }
+
+    private void LeftWave_OnNewEnemyReady(GameObject enemyGO, Vector3 enemyPos, Quaternion enemyRot)
+    {
+        SpawnEnemy(enemyGO, enemyPos, enemyRot);
+    }
+
+    private void RightWave_OnNewEnemyReady(GameObject enemyGO, Vector3 enemyPos, Quaternion enemyRot)
+    {
+        SpawnEnemy(enemyGO, enemyPos, enemyRot);
+    }
+
+    public void CommunicateNewTarget(ITarget target)
+    {
+        OnNewTargetReady?.Invoke(target);
     }
 }

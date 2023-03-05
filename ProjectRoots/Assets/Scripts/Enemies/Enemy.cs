@@ -2,13 +2,16 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
 {
 
     public float startSpeed;
     public float speed;
     public float startHealth;
     public float health;
+
+    public event Action<ITarget> OnTargetDestroy;
+
     //public Gradient gradient;
     //public Image fill;
 
@@ -29,9 +32,8 @@ public abstract class Enemy : MonoBehaviour
         health = startHealth;
     }
 
-    public void HitByProjectile(float damage)
+    public void HitByProjectile()
     {
-        health -= damage;
         GetComponent<HealthBar>().SetHealthBarHealth(health);
         
         if (health <= 0)
@@ -63,5 +65,39 @@ public abstract class Enemy : MonoBehaviour
         GameManager.Instance.onGameOver -= onGameOver;
     }
 
+    private void OnDestroy()
+    {
+        OnTargetDestroy?.Invoke(this);
+    }
+
     protected virtual void Attack() {}
+
+    public bool Equals(Enemy other)
+    {
+        if (other == null && this == null) return true;
+        if (other == null || this == null) return false;
+
+        return this.GetInstanceID() == other.GetInstanceID();
+
+    }
+
+    public void ApplyDamage(float damage)
+    {
+        health -= damage;      
+    }
+
+    public bool Targetable()
+    {
+        return health <= 0;
+    }
+
+    public Vector3 GetHitPosition()
+    {
+        return transform.position;
+    }
+
+    public void Hit()
+    {
+        HitByProjectile();
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DefenseManager : MonoBehaviour
@@ -11,25 +12,36 @@ public class DefenseManager : MonoBehaviour
 
     [SerializeField] List<Launcher> _rightDefenses; // They should be placed from the lowest to the highest
 
-    [Header("Colliders")]
-    [SerializeField] EnemyCollisionDetector _leftSideCollisionDetector;
-    [SerializeField] EnemyCollisionDetector _rightSideCollisionDetector;
-
     [Header("Blossom stats")]
     [SerializeField] Vector3 _finalDefensesScale;
     [SerializeField] float _bloomTime;
 
-    [Header("Defenses Stats")]
-    [SerializeField] private float _fireRate;
-    [SerializeField] private float _damage;
+
+    [Header("Target Providers")]
+    //[SerializeField] private List<ITargetProvider> _leftTargetProviders;
+    //[SerializeField] private List<ITargetProvider> _rightTargetProviders;
+
+    [SerializeField]
+    private ScriptableObject[] _leftTargetProviders;
+
+    private IEnumerable<ITargetProvider> LeftTargetProviders => _leftTargetProviders.OfType<ITargetProvider>();
+
+
+    [SerializeField]
+    private ScriptableObject[] _rightTargetProviders;
+
+    private IEnumerable<ITargetProvider> RightTargetProviders => _rightTargetProviders.OfType<ITargetProvider>();
 
 
     private int _defesesBloomIndex = 0;
 
-    private List<Enemy> _leftEnemiesQueue = new List<Enemy>();
-    private List<Enemy> _rightEnemiesQueue = new List<Enemy>();
+    private TargetDetector _leftTargetDetector;
+    private TargetDetector _rightTargetDetector;
 
-    private float _elapsedTime = 0;
+    private ITarget _leftTargetToShoot = null;
+    private ITarget _rightTargetToShoot = null;
+
+    private bool _enabled = true;
 
     private void Awake()
     {
@@ -43,45 +55,98 @@ public class DefenseManager : MonoBehaviour
         {
             launcher.transform.localScale = Vector3.zero;
         }
-
-        _leftSideCollisionDetector.onNewEnemyEntered += newEnemyFoundAtLeft;
-        _rightSideCollisionDetector.onNewEnemyEntered += newEnemyFoundAtRight;
-
-
     }
 
 
     private void Start()
     {
+        _leftTargetDetector = new TargetDetector(transform.position, LeftTargetProviders.ToList());
+        _rightTargetDetector = new TargetDetector(transform.position, RightTargetProviders.ToList());
+        
+        _leftTargetDetector.OnNewNearestEnemyFound += targetDetector_OnNewLeftNearestEnemyFound;
+        _rightTargetDetector.OnNewNearestEnemyFound += targetDetector_OnNewRightNearestEnemyFound;
+
         NextDefensesBloom();
         GameManager.Instance.onGameOver += onGameOver;
+
+        _enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        _leftTargetDetector.Disable();
+        _rightTargetDetector.Disable();
+
+        _leftTargetDetector.OnNewNearestEnemyFound -= targetDetector_OnNewLeftNearestEnemyFound;
+        _rightTargetDetector.OnNewNearestEnemyFound -= targetDetector_OnNewRightNearestEnemyFound;
     }
 
     private void Update()
     {
-        //if (_elapsedTime >= _fireRate)
-        //{
-        //    _elapsedTime = 0;
-        //    Shoot();
-        //}
-        //else
-        //{
-        //    _elapsedTime += Time.deltaTime;
-        //}
+        if (!_enabled) return;
+
+        _leftTargetDetector.Update();
+        _rightTargetDetector.Update();
     }
 
-    //private void Shoot()
-    //{
-    //    foreach (Launcher launcher in _leftDefenses)
-    //    {
-    //        launcher.Shoot(_damage);
-    //    }
+    public bool TryGetTarget(Launcher requester, out ITarget target)
+    {
+        if (_leftDefenses.Contains(requester))
+            return TryGetLeftTarget(out target);
 
-    //    foreach (Launcher launcher in _rightDefenses)
-    //    {
-    //        launcher.Shoot(_damage);
-    //    }
-    //}
+        return TryGetRightTarget(out target);
+    }
+
+
+    private bool TryGetLeftTarget(out ITarget target)
+    {
+        if (_leftTargetToShoot.Targetable() || _leftTargetDetector.TryGetNewTarget())
+        {
+            target = _leftTargetToShoot;
+            return true;
+        }
+
+        target = null;
+        return false;
+    }
+
+    private bool TryGetRightTarget(out ITarget target)
+    {
+        if (_rightTargetToShoot.Targetable() || _rightTargetDetector.TryGetNewTarget())
+        {
+            target = _rightTargetToShoot;
+            return true;
+        }
+
+        target = null;
+        return false;
+    }
+
+
+
+    private void targetDetector_OnNewRightNearestEnemyFound(ITarget obj) 
+    {
+        _rightTargetToShoot = obj;
+
+        // If launchers are waiting for a target, they should shoot it immediately if they can
+        foreach (Launcher launcher in _rightDefenses)
+        {
+            launcher.NewTargetFound(_rightTargetToShoot);
+        }
+    }
+
+    private void targetDetector_OnNewLeftNearestEnemyFound(ITarget obj) 
+    {
+        _leftTargetToShoot = obj;
+        
+        // If launchers are waiting for a target, they should shoot it immediately if they can
+        foreach (Launcher launcher in _leftDefenses)
+        {
+            launcher.NewTargetFound(_leftTargetToShoot);
+        }
+
+
+    } 
 
     private void onGameOver()
     {
@@ -94,31 +159,10 @@ public class DefenseManager : MonoBehaviour
         {
             launcher.DisableDefense();
         }
-    }
-
-    private void newEnemyFoundAtLeft(Enemy enemy)
-    {
-        foreach (Launcher launcher in _leftDefenses)
-        {
-            launcher.EnemyDetected(enemy);
-            //launcher.AssignTarget(enemy);
-
-        }
-
-        //_leftEnemiesQueue.Add(enemy);
 
 
-    }
 
-    private void newEnemyFoundAtRight(Enemy enemy)
-    {
-        foreach (Launcher launcher in _rightDefenses)
-        {
-            launcher.EnemyDetected(enemy);
-            //launcher.AssignTarget(enemy);
-        }
-
-        //_rightEnemiesQueue.Add(enemy);
+        _enabled = false;
     }
 
     public void NextDefensesBloom()
@@ -135,14 +179,11 @@ public class DefenseManager : MonoBehaviour
         foreach (Launcher launcher in _leftDefenses)
         {
             launcher.IncrementDamageBy(percentage);
-            //_damage += (_damage * percentage / 100);
         }
 
         foreach (Launcher launcher in _rightDefenses)
         {
             launcher.IncrementDamageBy(percentage);
-            //_fireRate += (_fireRate * percentage / 100);
-
         }
     }
 
@@ -159,11 +200,7 @@ public class DefenseManager : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        _leftSideCollisionDetector.onNewEnemyEntered -= newEnemyFoundAtLeft;
-        _rightSideCollisionDetector.onNewEnemyEntered -= newEnemyFoundAtRight;
-    }
+
 
 
     public int GetBloomIndex()
