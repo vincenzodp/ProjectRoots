@@ -80,8 +80,16 @@ public abstract class Projectile : MonoBehaviour
     //    {
     //        collider.gameObject.GetComponent<Enemy>().HitByProjectile(_totalDamage);
 
+
     //        Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
             
+
+            //Instantiate(hitVFX, gameObject.transform.position, Quaternion.identity);
+
+            //collider.gameObject.GetComponent<Enemy>().CreateFloatingDamageFeedbackText(this.transform.position, (int)_totalDamage);
+
+            //collider.gameObject.GetComponent<AudioSource>().Play();
+
 
     //        Destroy(gameObject);
     //    }

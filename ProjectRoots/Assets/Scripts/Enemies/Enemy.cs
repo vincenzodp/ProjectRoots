@@ -12,6 +12,10 @@ public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
 
     public event Action<ITarget> OnTargetDestroy;
 
+
+    public AudioSource hitaudiosource;
+    public GameObject FloatingDamageFeedbackText;
+
     //public Gradient gradient;
     //public Image fill;
 
@@ -30,6 +34,7 @@ public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
     {
         speed = startSpeed;
         health = startHealth;
+        hitaudiosource = GetComponent<AudioSource>();
     }
 
     public void HitByProjectile()
@@ -68,6 +73,14 @@ public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
     private void OnDestroy()
     {
         OnTargetDestroy?.Invoke(this);
+    }
+
+
+    public void CreateFloatingDamageFeedbackText(Vector3 position, int damage)
+    {
+        var newFloatingText = Instantiate(FloatingDamageFeedbackText, position, FloatingDamageFeedbackText.transform.rotation);
+        var floatingTextManager = newFloatingText.GetComponentInChildren<FloatingDamageFeedbackManager>();
+        floatingTextManager.DisplayDamage(damage);
     }
 
     protected virtual void Attack() {}
