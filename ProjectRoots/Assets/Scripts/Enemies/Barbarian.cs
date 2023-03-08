@@ -7,10 +7,10 @@ public class Barbarian : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        startSpeed = 6f;
-        startHealth = 250;
-        speed = startSpeed;
-        health = startHealth;
+        //startSpeed = 6f;
+        //startHealth = 250;
+        //speed = startSpeed;
+        //health = startHealth;
     }
 
     // Update is called once per frame

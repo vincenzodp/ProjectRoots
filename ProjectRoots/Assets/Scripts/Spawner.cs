@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject baseEnemyPrefab;
     [SerializeField] GameObject heavyEnemyPrefab;
 
-    [SerializeField] Transform leftSpawnPoint, rightSpawnPoint;
+    [SerializeField] SpawnPoint leftSpawnPoint, rightSpawnPoint;
 
     [SerializeField, Tooltip("Enable this to experience a well balanced scaling difficulty gameplay")] 
     bool useExperimentalSuperbalancedExperience = false;
@@ -150,13 +150,22 @@ public class Spawner : MonoBehaviour
 
         if(enemies[enemiesIndex] == 0)
         {
-            Destroy(Instantiate(baseEnemyPrefab, leftSpawnPoint.position, Quaternion.identity), 14f);
-            Destroy(Instantiate(baseEnemyPrefab, rightSpawnPoint.position, Quaternion.identity), 14f);
+            //Destroy(Instantiate(baseEnemyPrefab, leftSpawnPoint.position, Quaternion.identity), 14f);
+            //Destroy(Instantiate(baseEnemyPrefab, rightSpawnPoint.position, Quaternion.identity), 14f);
+            //Instantiate(baseEnemyPrefab, leftSpawnPoint.position, Quaternion.identity);
+            //Instantiate(baseEnemyPrefab, rightSpawnPoint.position, Quaternion.identity);
+            leftSpawnPoint.SpawnTarget(baseEnemyPrefab);
+            rightSpawnPoint.SpawnTarget(baseEnemyPrefab);
+
         }
         else
         {
-            Destroy(Instantiate(heavyEnemyPrefab, leftSpawnPoint.position, Quaternion.identity), 23f);
-            Destroy(Instantiate(heavyEnemyPrefab, rightSpawnPoint.position, Quaternion.identity), 23f);
+            //Destroy(Instantiate(heavyEnemyPrefab, leftSpawnPoint.position, Quaternion.identity), 23f);
+            //Destroy(Instantiate(heavyEnemyPrefab, rightSpawnPoint.position, Quaternion.identity), 23f);
+            //Instantiate(heavyEnemyPrefab, leftSpawnPoint.position, Quaternion.identity);
+            //Instantiate(heavyEnemyPrefab, rightSpawnPoint.position, Quaternion.identity);
+            leftSpawnPoint.SpawnTarget(heavyEnemyPrefab);
+            rightSpawnPoint.SpawnTarget(heavyEnemyPrefab);
         }
 
         enemiesIndex++;

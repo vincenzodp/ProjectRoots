@@ -333,7 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 460233795014533484}
-  - component: {fileID: 2729725385264097709}
+  - component: {fileID: 2179807307192697340}
   - component: {fileID: -1347104611078978259}
   - component: {fileID: 5801543306483956502}
   - component: {fileID: 6954512013272940851}
@@ -368,7 +368,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2729725385264097709
+--- !u!114 &2179807307192697340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,15 +377,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 948223905045740502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e65eeb43ee4bb46add0038ee6682fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e0b461f6b59c8c488b8e97417b0913d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 0
-  speed: 0
-  startHealth: 250
-  health: 250
-  hitaudiosource: {fileID: 0}
-  FloatingDamageFeedbackText: {fileID: 6307542790867895084, guid: 95286f84a6d56784cbc34cd410113fff, type: 3}
+  _baseHealth: 250
+  _baseSpeed: 6
+  _currentHealth: 0
+  _currentSpeed: 0
+  hitAudioSource: {fileID: 0}
+  floatingDamageFeedbackText: {fileID: 6307542790867895084, guid: 95286f84a6d56784cbc34cd410113fff, type: 3}
 --- !u!114 &-1347104611078978259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,8 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5333a0e6f226554189e57d9c1e1573f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawn: {fileID: 0}
-  Spawn1: {fileID: 0}
+  leftSpawnPoint: {fileID: 0}
+  rightSpawnPoint: {fileID: 0}
 --- !u!95 &5801543306483956502
 Animator:
   serializedVersion: 5

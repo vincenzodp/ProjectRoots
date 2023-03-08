@@ -3675,7 +3675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8658444094843831014}
-  - component: {fileID: 5272487302598626110}
+  - component: {fileID: 183208121004777652}
   - component: {fileID: 2232083195534152695}
   - component: {fileID: 1946825126922847650}
   - component: {fileID: 3600402465962879871}
@@ -3710,7 +3710,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5272487302598626110
+--- !u!114 &183208121004777652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3719,15 +3719,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8314535152513357916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fb327588727ce2409ba79ed52d39f19, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e0b461f6b59c8c488b8e97417b0913d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 0
-  speed: 0
-  startHealth: 0
-  health: 0
-  hitaudiosource: {fileID: 0}
-  FloatingDamageFeedbackText: {fileID: 6307542790867895084, guid: 95286f84a6d56784cbc34cd410113fff, type: 3}
+  _baseHealth: 150
+  _baseSpeed: 10
+  _currentHealth: 0
+  _currentSpeed: 0
+  hitAudioSource: {fileID: 0}
+  floatingDamageFeedbackText: {fileID: 6307542790867895084, guid: 95286f84a6d56784cbc34cd410113fff, type: 3}
 --- !u!114 &2232083195534152695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3833,7 +3833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 244331458815900074}
   slider: {fileID: 5805614339839209385}
-  health: 100
+  health: 150
   gradient:
     serializedVersion: 2
     key0: {r: 0.8301887, g: 0, b: 0, a: 1}

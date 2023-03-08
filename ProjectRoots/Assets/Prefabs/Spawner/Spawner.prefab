@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2027916736370646495}
+  - component: {fileID: 709400376596459235}
+  - component: {fileID: 1010547770}
   m_Layer: 0
   m_Name: RightSpawnPoint
   m_TagString: Untagged
@@ -31,6 +33,30 @@ Transform:
   m_Father: {fileID: 1260814762308882080}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50}
+--- !u!114 &709400376596459235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027916736370646494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b63d9c314500b343ad99eb52000f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1010547770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027916736370646494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b63d9c314500b343ad99eb52000f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2027916736753148386
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +66,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2027916736753148387}
+  - component: {fileID: 8000547055106806288}
+  - component: {fileID: 1010547771}
   m_Layer: 0
   m_Name: LeftSpawnPoint
   m_TagString: Untagged
@@ -62,6 +90,30 @@ Transform:
   m_Father: {fileID: 1260814762308882080}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 50}
+--- !u!114 &8000547055106806288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027916736753148386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b63d9c314500b343ad99eb52000f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1010547771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027916736753148386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b63d9c314500b343ad99eb52000f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2027916738374733768
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseEnemyPrefab: {fileID: 8314535152513357916, guid: 6326632eb7597984ba1676570eb1466c, type: 3}
   heavyEnemyPrefab: {fileID: 948223905045740502, guid: f32c1661c1b7a60498b7ae75d14f6669, type: 3}
-  leftSpawnPoint: {fileID: 2027916736753148387}
-  rightSpawnPoint: {fileID: 2027916736370646495}
+  leftSpawnPoint: {fileID: 1010547771}
+  rightSpawnPoint: {fileID: 1010547770}
   useExperimentalSuperbalancedExperience: 0
   enemies: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000001000000000000000100000000000000010000000000000001000000

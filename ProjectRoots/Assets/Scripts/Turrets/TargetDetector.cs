@@ -3,17 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A target detector is responsible of finding a targetable target. Currently, the nearest one from a core position.
+/// </summary>
 public class TargetDetector
 {
-    public event Action<ITarget> OnNewNearestEnemyFound;
+    public event Action<ITarget> OnNewNearestEnemyFound; // Triggered anytime a new targetable enemy is found
 
-    Vector3 _corePos;
+    Vector3 _corePos; // The position from where a distance with targets is calculated
 
-    List<ITargetProvider> _targetProviders;
+    List<ITargetProvider> _targetProviders; // Elements in charge of providing new targets
 
-    List<ITarget> _detectedTargets = new List<ITarget>();
+    List<ITarget> _detectedTargets = new List<ITarget>(); // Currently found targets that can be chosen to be the nearest ones
 
-    ITarget nearestTarget = null;
+    ITarget nearestTarget = null; // The current nearest target
 
 
     public TargetDetector(Vector3 corePos, List<ITargetProvider> targetProviders)
@@ -21,6 +24,7 @@ public class TargetDetector
         this._corePos = corePos;
         this._targetProviders = targetProviders;
 
+        // Listens to target providers to get new targets
         foreach (ITargetProvider targetProvider in _targetProviders)
         {
             targetProvider.OnNewTargetReady += TargetProvider_OnNewTargetReady;
@@ -29,6 +33,7 @@ public class TargetDetector
 
     public void Disable()
     {
+        // Stops from listening to target providers
         foreach (ITargetProvider targetProvider in _targetProviders)
         {
             targetProvider.OnNewTargetReady -= TargetProvider_OnNewTargetReady;
@@ -57,7 +62,7 @@ public class TargetDetector
     }
 
     /// <summary>
-    /// Finds the nearest tagetable target 
+    /// Finds the nearest targetable target 
     /// </summary>
     private void FindNearestTarget()
     {
@@ -68,6 +73,7 @@ public class TargetDetector
             if (!target.Targetable()) continue;
 
             float dist = Vector3.Distance(target.GetHitPosition(), _corePos);
+            dist = Mathf.Abs(dist);
             if (dist < minDistance)
             {
                 tempNearestEnemy = target;
@@ -75,7 +81,7 @@ public class TargetDetector
             }
         }
 
-        if (!tempNearestEnemy.Equals(nearestTarget))
+        if (tempNearestEnemy != null && !tempNearestEnemy.Equals(nearestTarget))
         {
             nearestTarget = tempNearestEnemy;
             OnNewNearestEnemyFound?.Invoke(nearestTarget);
@@ -88,11 +94,12 @@ public class TargetDetector
     /// <returns></returns>
     public bool TryGetNewTarget()
     {
-        if (nearestTarget != null || nearestTarget.Targetable())
+        if (nearestTarget != null && nearestTarget.Targetable())
         {
             return true;
         }
 
+        nearestTarget = null;
         FindNearestTarget();
         return nearestTarget != null;
     }

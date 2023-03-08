@@ -55,7 +55,7 @@ public class EnemyMovement : MonoBehaviour
         center -= new Vector3(0, 12, 0);
         Vector3 riseRelCenter = leftSpawnPoint.position - center;
         Vector3 setRelCenter = target.position - center;
-        float fracComplete = (Time.time - startTime) * enemy.speed / 150f;
+        float fracComplete = (Time.time - startTime) * enemy.GetSpeed() / 150f;
 
 
 
@@ -75,7 +75,7 @@ public class EnemyMovement : MonoBehaviour
         center -= new Vector3(0, 12, 0);
         Vector3 riseRelCenter = rightSpawnPoint.position - center;
         Vector3 setRelCenter = target.position - center;
-        float fracComplete = (Time.time - startTime) * enemy.speed / 150f;
+        float fracComplete = (Time.time - startTime) * enemy.GetSpeed() / 150f;
 
         Vector3 nextPosition = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete) + center;
         //transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);

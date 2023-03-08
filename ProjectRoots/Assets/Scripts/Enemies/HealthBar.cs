@@ -13,15 +13,11 @@ public class HealthBar : MonoBehaviour
 
     public void Awake()
     {
-        canvas.enabled = false;
-        slider.enabled = false;
-    }
-
-    public void SetHealthBarMaxHealth()
-    {
         slider.maxValue = health;
         slider.value = health;
         fill.color = gradient.Evaluate(1f);
+        canvas.enabled = false;
+        slider.enabled = false;
     }
 
     public void SetHealthBarHealth(float currenHealth)

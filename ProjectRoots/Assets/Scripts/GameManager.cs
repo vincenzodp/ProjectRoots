@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject gameOverUI;
 
+    [SerializeField] bool _destroyEnemiesAfterOneAttack = false;
+
     public delegate void OnRootunlocked(TreeRootNode treeRootNodeUnlocked);
     public event OnRootunlocked onRootUnlocked;
 
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     //Handful sub-systems references
     private DefenseManager _defenseManager;
     private TreeController _treeController;
+    private EnergyRefiller _energyRefiller;
 
     private void Awake()
     {
@@ -34,13 +37,17 @@ public class GameManager : MonoBehaviour
         if (_treeController == null)
             Debug.LogError("Tree Controller not found!");
 
+        _energyRefiller = FindObjectOfType<EnergyRefiller>();
+        if (_energyRefiller == null)
+            Debug.LogError("Energy refiller not found!");
+
         if (Instance == null)
         {
             Instance = this;
         }
 
         SubscribeToInstantiatedObjsEvents();
-        EnergyRefiller.Instance.OnValueBelowZeroOnce += EnergyBelowZeroEmitted;
+        _energyRefiller.OnValueBelowZeroOnce += EnergyBelowZeroEmitted;
     }
 
     void SubscribeToInstantiatedObjsEvents()

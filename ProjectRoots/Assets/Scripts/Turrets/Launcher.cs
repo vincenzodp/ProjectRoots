@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// A Launcher component asks for and shoots to a target
+/// </summary>
 public class Launcher : MonoBehaviour
 {
     [SerializeField] protected GameObject _projectilePrefab;
@@ -28,8 +31,6 @@ public class Launcher : MonoBehaviour
 
     private bool _isWaitingForTarget = true;
 
-    private ITarget _targetToShootWhenInRange = null;
-
     private DefenseManager _defenseManager;
     private void Start()
     {
@@ -37,6 +38,7 @@ public class Launcher : MonoBehaviour
     }
 
 
+    // Asks to the defense manager for a new shootable target
     private void AskToShoot()
     {
         if(_defenseManager.TryGetTarget(this, out ITarget target))
@@ -47,7 +49,7 @@ public class Launcher : MonoBehaviour
                 target.ApplyDamage(_damage);
 
                 // Instantiates and starts the projectile
-                Projectile projectile = Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>();
+                Projectile projectile = Instantiate(_projectilePrefab, _projectileSpawner.position, Quaternion.identity, transform).GetComponent<Projectile>();
                 projectile.StartMovement(target);
 
                     //.GetComponent<Projectile>().Initialize(_projectileSpawner, target.transform, _damage);
@@ -63,23 +65,8 @@ public class Launcher : MonoBehaviour
         _isWaitingForTarget = true;
     }
 
-    public void TryToShootImmediately(ITarget target)
-    {
-        if (target.Targetable())
-        {
-            // Applies the damage to the target before the projectile hits it
-            target.ApplyDamage(_damage);
 
-            // Instantiates and starts the projectile
-            Projectile projectile = Instantiate(_projectilePrefab, _projectileSpawner.localPosition, Quaternion.identity, transform).GetComponent<Projectile>();
-            projectile.StartMovement(target);
-
-            // If a target is going to be shot, the launher will no longer wait for a target (until a new one can't be found) 
-            _isWaitingForTarget = false;
-
-        }
-    }
-
+    // Checks if a target is in range considering its shoot range
     private bool TargetIsInRange(ITarget target)
     {
         return Vector3.Distance(target.GetHitPosition(), transform.position) <= _shootRange;
@@ -89,20 +76,15 @@ public class Launcher : MonoBehaviour
     {
         if (_disabled) return;
 
+        // If a target has not been chosen yet, it asks for it every frame
         if (_isWaitingForTarget)
         {
-            if(_targetToShootWhenInRange != null)
-            {
-                if (TargetIsInRange(_targetToShootWhenInRange))
-                {
-                    TryToShootImmediately(_targetToShootWhenInRange);
-                    _targetToShootWhenInRange = null;
-                    
-                }
-            }
+            AskToShoot();
         }
         else
         {
+            // Otherwise, it respects its fire ratio
+
             if (_elapsedTime >= _fireRate)
             {
                 _elapsedTime = 0;
@@ -127,22 +109,6 @@ public class Launcher : MonoBehaviour
         _disabled = false;
 
     }
-
-    internal void NewTargetFound(ITarget targetToShoot)
-    {
-        if (_disabled || !_isWaitingForTarget) return;
-
-        if(TargetIsInRange(targetToShoot))
-        {
-            TryToShootImmediately(targetToShoot);
-        }
-        else
-        {
-            _targetToShootWhenInRange = targetToShoot;
-        }
-
-    }
-
 
 
     public void IncrementDamageBy(float percentage)

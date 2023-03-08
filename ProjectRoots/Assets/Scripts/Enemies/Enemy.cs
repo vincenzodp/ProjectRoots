@@ -2,25 +2,33 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
+public class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
 {
 
-    public float startSpeed;
-    public float speed;
-    public float startHealth;
-    public float health;
+    [SerializeField] private float _baseHealth;
+    [SerializeField] private float _baseSpeed;
+
+    [SerializeField] private float _currentHealth;
+    [SerializeField] private float _currentSpeed;
 
     public event Action<ITarget> OnTargetDestroy;
 
 
-    public AudioSource hitaudiosource;
-    public GameObject FloatingDamageFeedbackText;
+    [HideInInspector] public AudioSource hitAudioSource;
+    public GameObject floatingDamageFeedbackText;
+
+    private CapsuleCollider _capsuleCollider;
 
     //public Gradient gradient;
     //public Image fill;
 
     private void Awake()
     {
+        _currentSpeed = _baseSpeed;
+        _currentHealth = _baseHealth;
+        hitAudioSource = GetComponent<AudioSource>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
+
         if (GameManager.Instance == null)
         {
             return;
@@ -29,19 +37,11 @@ public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
         GameManager.Instance.onGameOver += onGameOver;
     }
 
-
-    void Start()
-    {
-        speed = startSpeed;
-        health = startHealth;
-        hitaudiosource = GetComponent<AudioSource>();
-    }
-
     public void HitByProjectile()
     {
-        GetComponent<HealthBar>().SetHealthBarHealth(health);
+        GetComponent<HealthBar>().SetHealthBarHealth(_currentHealth);
         
-        if (health <= 0)
+        if (_currentHealth <= 0)
         {
             GetComponent<EnemyMovement>().stopmoving();
             GetComponent<EnemyDeath>().TriggerDeath();
@@ -50,7 +50,7 @@ public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
 
     public float getHealth()
     {
-        return health;
+        return _currentHealth;
     }
 
     public void DestroyEnemyEvent()
@@ -78,7 +78,7 @@ public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
 
     public void CreateFloatingDamageFeedbackText(Vector3 position, int damage)
     {
-        var newFloatingText = Instantiate(FloatingDamageFeedbackText, position, FloatingDamageFeedbackText.transform.rotation);
+        var newFloatingText = Instantiate(floatingDamageFeedbackText, position, floatingDamageFeedbackText.transform.rotation);
         var floatingTextManager = newFloatingText.GetComponentInChildren<FloatingDamageFeedbackManager>();
         floatingTextManager.DisplayDamage(damage);
     }
@@ -96,12 +96,17 @@ public abstract class Enemy : MonoBehaviour, ITarget, IEquatable<Enemy>
 
     public void ApplyDamage(float damage)
     {
-        health -= damage;      
+        _currentHealth -= damage;      
+    }
+
+    internal float GetSpeed()
+    {
+        return _currentSpeed;
     }
 
     public bool Targetable()
     {
-        return health <= 0;
+        return _currentHealth > 0;
     }
 
     public Vector3 GetHitPosition()
