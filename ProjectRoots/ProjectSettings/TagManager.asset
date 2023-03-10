@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Slider
   - Projectile
+  - Root
   layers:
   - Default
   - TransparentFX
