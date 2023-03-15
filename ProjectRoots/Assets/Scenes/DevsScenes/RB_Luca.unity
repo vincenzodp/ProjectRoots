@@ -1730,7 +1730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f62849f273263744bf38798a66ff19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseUI: {fileID: 5131909382474404261, guid: 74bbd4c8ea3e0f940bcc36645e181e70, type: 3}
   PurchasePanel: {fileID: 0}
+  PausePanel: {fileID: 0}
 --- !u!1001 &1339910026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3914,6 +3916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8960750851229004840, guid: b08412500debe354cbc4a9dc39360fa2, type: 3}
+      propertyPath: PauseUI
+      value: 
+      objectReference: {fileID: 5131909382474404261, guid: 74bbd4c8ea3e0f940bcc36645e181e70, type: 3}
     - target: {fileID: 8960750851229004840, guid: b08412500debe354cbc4a9dc39360fa2, type: 3}
       propertyPath: gameOverUI
       value: 

@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    [SerializeField] GameObject PauseUI;
+
     public static bool GameIsPaused = false;
     public GameObject PurchasePanel;
+    public GameObject PausePanel;
 
     private void Start()
     {
         PurchasePanel = GameObject.Find("PurchaseRootPanel");
+        PausePanel = Instantiate(PauseUI, Vector3.zero, PauseUI.transform.rotation);
+        PausePanel.SetActive(false);
     }
 
     void Update()
@@ -31,6 +36,7 @@ public class Pause : MonoBehaviour
 
     private void PauseGame()
     {
+        PausePanel.SetActive(true);
         PurchasePanel.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -41,8 +47,9 @@ public class Pause : MonoBehaviour
         }
     }
 
-    private void Resume()
+    public void Resume()
     {
+        PausePanel.SetActive(false);
         PurchasePanel.SetActive(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
