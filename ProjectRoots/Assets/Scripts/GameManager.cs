@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
         SubscribeToInstantiatedObjsEvents();
         _energyRefiller.OnValueBelowZeroOnce += EnergyBelowZeroEmitted;
+
     }
 
     void SubscribeToInstantiatedObjsEvents()
@@ -110,5 +111,10 @@ public class GameManager : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ResumeGame()
+    {
+        this.GetComponent<Pause>().Resume();
     }
 }
