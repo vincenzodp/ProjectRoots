@@ -158,11 +158,11 @@ RectTransform:
   m_Father: {fileID: 919026437}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -452}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 63}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &13907153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,11 +559,11 @@ RectTransform:
   m_Father: {fileID: 2086892700}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 322}
-  m_SizeDelta: {x: 1341.5872, y: 372.535}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -31.732422}
+  m_SizeDelta: {x: 1341.5872, y: 372.53503}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &327612607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,12 +777,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1743,11 +1743,11 @@ RectTransform:
   m_Father: {fileID: 919026437}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 436}
-  m_SizeDelta: {x: 784.1158, y: 114.9019}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -46.54904}
+  m_SizeDelta: {x: 784.1158, y: 114.90192}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1854918745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,7 +1880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000024438, y: -24}
+  m_AnchoredPosition: {x: 0, y: -24}
   m_SizeDelta: {x: 1453.7839, y: 722.6181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884611754
@@ -1915,29 +1915,25 @@ MonoBehaviour:
     Great
     and delightful yes, indeed
 
+    Great and  indeed
+
+    So many good names so
+    much to say
 
     Great and delightful yes, indeed
 
-    Very very
-    good so much nice so many good names so much to say
-
-    Great and delightful
-    yes, indeed
-
     many many names
-
-    Very very good so much nice so many good
-    names so much to say
-
-    Very very good so many good names so much to say
 
     Very
     very good so much nice so many good names so much to say
 
-    Great and delightful
-    yes, indeed
+    Very very good
+    so many good names so much to say
 
-    many many names
+    Great and delightful yes, indeed
+
+    many
+    many names
 
 
 '
