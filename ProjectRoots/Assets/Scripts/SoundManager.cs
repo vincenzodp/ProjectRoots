@@ -4,7 +4,8 @@ using UnityEngine;
 
 public static class SoundManager 
 {
-
+    public static float effectsVolume = 1f;
+    public static float musicVolume = 1f;
 
     public enum Sound
     {
@@ -21,24 +22,22 @@ public static class SoundManager
         soundTimerDictionary[Sound.MainTheme] = 0f;
     }
 
-    public static void PlaySound(Sound sound)
+    public static void PlaySoundEffect(Sound sound)
     {
-        if(!CanPlaySound(sound)) { return; }
-
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(sound);
-        audioSource.PlayOneShot(audioSource.clip);
+        audioSource.volume = effectsVolume;
+        audioSource.Play();
         Object.Destroy(soundGameObject, audioSource.clip.length);
     }
 
     public static AudioSource PlaySoundStoppable(Sound sound)
     {
-        if (!CanPlaySound(sound)) { return null; }
-
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(sound);
+        audioSource.volume = musicVolume;
         audioSource.Play();
         Object.Destroy(soundGameObject, audioSource.clip.length);
 
@@ -47,51 +46,19 @@ public static class SoundManager
 
     public static void PlaySoundLooping(Sound sound)
     {
-        if (!CanPlaySound(sound)) { return; }
-
-        GameObject musicGameObject = new GameObject("Main Music");
+        GameObject musicGameObject = new GameObject("MainTheme");
         AudioSource audioSource = musicGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(sound);
-        audioSource.volume = .1f;
+        audioSource.volume = musicVolume;
         audioSource.loop = true;
         audioSource.Play();
 
         // Object.Destroy(soundGameObject, audioSource.clip.length);
     }
 
-    public static void AdjustMusicVolume(float newValue)
+    public static void AdjustMusicVolume(float newValue) 
     {
-        GameObject.Find("Main Music").GetComponent<AudioSource>().volume = newValue;
-    }
-
-    // in here the sounds that cannot be played repeatedly can be set. by default every sound can be played constantly.
-    private static bool CanPlaySound(Sound sound)
-    {
-        switch(sound)
-        {
-            default: 
-                return true;
-            case Sound.MainTheme:
-                if (soundTimerDictionary.ContainsKey(sound))
-                {
-                    float lastTimePlayed = soundTimerDictionary[sound];
-                    float mainThemeTimerMax = 1f; // main theme lasts 71 seconds.
-                    if (lastTimePlayed + mainThemeTimerMax < Time.time)
-                    {
-                        soundTimerDictionary[sound] = Time.time;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    return true;
-                }
-                
-        }
+        GameObject.Find("MainTheme").GetComponent<AudioSource>().volume = newValue;
     }
 
     private static AudioClip GetAudioClip(Sound sound)

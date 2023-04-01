@@ -1,16 +1,47 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestSounds : MonoBehaviour
 {
     private List<AudioSource> playingSounds = new List<AudioSource>();
-    
+
+    public Slider sliderSoundEffects;
+    public Slider sliderSoundMusic;
+
+    private float volumeUpdateTimer = 0f; 
+
 
 
     private void Awake()
     {
         SoundManager.Initialize();
+    }
+
+    private void Update()
+    {
+        if(volumeUpdateTimer < 0f)
+        {
+            volumeUpdateTimer = .1f;
+            SoundEffectVolumeUpdate();
+            SoundMusicVolumeUpdate();
+        }
+        else
+        {
+            volumeUpdateTimer -= Time.deltaTime;
+        }
+    }
+
+    public void SoundEffectVolumeUpdate()
+    {
+        SoundManager.effectsVolume = sliderSoundEffects.value;
+    }
+
+    public void SoundMusicVolumeUpdate()
+    {
+        SoundManager.musicVolume = sliderSoundMusic.value;
     }
 
     public void StopPlayingSound()
@@ -27,12 +58,12 @@ public class TestSounds : MonoBehaviour
 
     public void PlayEnemyHitSound()
     {
-        SoundManager.PlaySound(SoundManager.Sound.EnemyHit);
+        SoundManager.PlaySoundEffect(SoundManager.Sound.EnemyHit);
     }
 
     public void PlayTurretShootSound()
     {
-        SoundManager.PlaySound(SoundManager.Sound.TurretShoot);
+        SoundManager.PlaySoundEffect(SoundManager.Sound.TurretShoot);
     }
 
     public void PlayMainThemeSound()
