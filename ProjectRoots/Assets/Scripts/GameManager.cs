@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private DefenseManager _defenseManager;
     private TreeController _treeController;
     private EnergyRefiller _energyRefiller;
+    private TurretPurchaseManager _turretPurchaseManager;
 
     private void Awake()
     {
@@ -41,6 +42,11 @@ public class GameManager : MonoBehaviour
         if (_energyRefiller == null)
             Debug.LogError("Energy refiller not found!");
 
+        _turretPurchaseManager = FindObjectOfType<TurretPurchaseManager>();
+        if (_turretPurchaseManager == null)
+            Debug.LogError("Turret Purchase Manager not found!");
+
+
         if (Instance == null)
         {
             Instance = this;
@@ -49,6 +55,11 @@ public class GameManager : MonoBehaviour
         SubscribeToInstantiatedObjsEvents();
         _energyRefiller.OnValueBelowZeroOnce += EnergyBelowZeroEmitted;
 
+    }
+
+    private void Start()
+    {
+        _turretPurchaseManager.EnableNextPurchaseSlots();
     }
 
     void SubscribeToInstantiatedObjsEvents()
@@ -66,7 +77,8 @@ public class GameManager : MonoBehaviour
         {
             case PowerUpsType.UPGRADE_TREE:
                 _treeController.Grow();
-                _defenseManager.NextDefensesBloom();
+                //_defenseManager.NextDefensesBloom();
+                _turretPurchaseManager.EnableNextPurchaseSlots();
                 break;
 
             case PowerUpsType.UPGRADE_DEFENSES_ATTACK:
