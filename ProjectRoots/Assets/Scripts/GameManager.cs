@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(1);
+        SceneLoader.ReloadMainScene();
     }
 
     public void ResumeGame()
