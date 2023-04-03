@@ -26,7 +26,6 @@ public static class SceneLoader
         SceneManager.LoadScene((int)SceneBuildIndexes.MainScene);
     }
 
-
     public static void LoadIntroScene()
     {
         SceneManager.LoadScene((int)SceneBuildIndexes.IntroScene);

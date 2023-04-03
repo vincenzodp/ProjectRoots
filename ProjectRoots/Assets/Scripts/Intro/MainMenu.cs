@@ -24,6 +24,11 @@ public class MainMenu : MonoBehaviour
         SceneLoader.LoadIntroScene();
     }
 
+    public void QuitToMainMenuButtonPressed()
+    {
+        SceneLoader.LoadIntroScene();
+    }
+
     public void QuitButtonPressed()
     {
         Application.Quit();
