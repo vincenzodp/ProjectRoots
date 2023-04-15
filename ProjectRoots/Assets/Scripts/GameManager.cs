@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private DefenseManager _defenseManager;
     private TreeController _treeController;
     private EnergyRefiller _energyRefiller;
-    private TurretPurchaseManager _turretPurchaseManager;
+    private LauncherPurchaseManager _turretPurchaseManager;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         if (_energyRefiller == null)
             Debug.LogError("Energy refiller not found!");
 
-        _turretPurchaseManager = FindObjectOfType<TurretPurchaseManager>();
+        _turretPurchaseManager = FindObjectOfType<LauncherPurchaseManager>();
         if (_turretPurchaseManager == null)
             Debug.LogError("Turret Purchase Manager not found!");
 

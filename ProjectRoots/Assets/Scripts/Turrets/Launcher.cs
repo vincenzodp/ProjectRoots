@@ -12,13 +12,9 @@ public class Launcher : MonoBehaviour
     [SerializeField] protected GameObject _projectilePrefab;
 
 
-    [Header("Defense stats")]
+    //[Header("Defense stats")]
+    [SerializeField] LauncherData _launcherData;
 
-    [SerializeField] protected float _fireRate = 2f;
-
-    [SerializeField] protected float _damage;
-
-    [SerializeField] protected float _shootRange;
 
     [Header("Projectile Spawn")]
     [SerializeField] private Transform _projectileSpawner;
@@ -32,9 +28,20 @@ public class Launcher : MonoBehaviour
     private bool _isWaitingForTarget = true;
 
     private DefenseManager _defenseManager;
+
+
+    private float _fireRate;
+    private float _damage;
+    private float _shootRange;
+
     private void Start()
     {
         _defenseManager = FindObjectOfType<DefenseManager>();
+
+        _damage = _launcherData.Damage;
+        _fireRate = _launcherData.FireRate;
+        _shootRange = _launcherData.ShootRange;
+
     }
 
 

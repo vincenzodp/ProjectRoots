@@ -1,33 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class TestTurret : MonoBehaviour
 {
-
-    [SerializeField] float turretLifetime = 10;
-    [SerializeField] int defenseTurretCost = 30;
-
-
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    public float GetLifetime()
+    internal int GetCost()
     {
-        return turretLifetime;
+        throw new NotImplementedException();
     }
 
-    public int GetCost()
+    internal float GetLifetime()
     {
-        return defenseTurretCost;
+        throw new NotImplementedException();
     }
 }

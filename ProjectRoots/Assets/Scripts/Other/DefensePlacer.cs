@@ -9,7 +9,7 @@ public class DefensePlacer : MonoBehaviour
 
     [SerializeField] GameObject defenseTurret;
 
-    Turret turretScript;
+    TestTurret turretScript;
 
 
     GameObject currentlySelected = null;
@@ -24,7 +24,7 @@ public class DefensePlacer : MonoBehaviour
     {
         resourceBar = FindObjectOfType<ResourceBar>();
 
-        turretScript = defenseTurret.GetComponent<Turret>();
+        turretScript = defenseTurret.GetComponent<TestTurret>();
     }
 
     // Update is called once per frame
