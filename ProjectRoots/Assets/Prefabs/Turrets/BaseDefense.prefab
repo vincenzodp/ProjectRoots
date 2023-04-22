@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1385830869189682213}
   - component: {fileID: 6333390052397268565}
   m_Layer: 0
-  m_Name: Cylinder.013
+  m_Name: TowerGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 587885082866228440}
   - component: {fileID: 9085236625521478063}
   m_Layer: 0
-  m_Name: Plane.005
+  m_Name: TowerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

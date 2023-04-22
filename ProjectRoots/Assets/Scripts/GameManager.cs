@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.PlaySoundLooping(SoundManager.Sound.MainTheme);
         _turretPurchaseManager.EnableNextPurchaseSlots();
     }
 
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(1);
+        SceneLoader.ReloadMainScene();
     }
 
     public void ResumeGame()

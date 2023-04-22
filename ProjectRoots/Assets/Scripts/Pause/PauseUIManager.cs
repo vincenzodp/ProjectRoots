@@ -17,4 +17,9 @@ public class PauseUIManager : MonoBehaviour
         GameManager.Instance.ResumeGame();
     }
 
+    void OnQuitClick()
+    {
+        GameManager.Instance.ResumeGame();
+    }
+
 }

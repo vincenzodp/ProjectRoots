@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class DefenseManager : MonoBehaviour
 {
@@ -19,12 +20,12 @@ public class DefenseManager : MonoBehaviour
 
     [Header("Target Providers")]
 
-    [SerializeField]
-    private List<Component> _leftTargetProviders; // Asking for a component because interfaces can't be given as serializd (by default at least)
+    [RequireInterface(typeof(ITargetProvider))]
+    public Object leftTargetProvider;
 
 
-    [SerializeField]
-    private List<Component> _rightTargetProviders;
+    [RequireInterface(typeof(ITargetProvider))]
+    public Object rightTargetProvider;
 
 
 
@@ -57,18 +58,11 @@ public class DefenseManager : MonoBehaviour
     {
         // Creating instances of Target Detectors 
         List<ITargetProvider> leftTargetProviders = new List<ITargetProvider>();
-
-        foreach(Component component in this._leftTargetProviders)
-        {
-            leftTargetProviders.Add(component as ITargetProvider);
-        }
+        leftTargetProviders.Add(leftTargetProvider as ITargetProvider);
 
         List<ITargetProvider> rightTargetProviders = new List<ITargetProvider>();
+        rightTargetProviders.Add(rightTargetProvider as ITargetProvider);
 
-        foreach (Component component in this._rightTargetProviders)
-        {
-            rightTargetProviders.Add(component as ITargetProvider);
-        }
 
         _leftTargetDetector = new TargetDetector(transform.position, leftTargetProviders);
         _rightTargetDetector = new TargetDetector(transform.position, rightTargetProviders);
@@ -78,10 +72,10 @@ public class DefenseManager : MonoBehaviour
         _rightTargetDetector.OnNewNearestEnemyFound += targetDetector_OnNewRightNearestEnemyFound;
 
         // Let the first row of defences grow
-        //NextDefensesBloom();
+        NextDefensesBloom();
 
         //Subscribes to Game Manager relevant events
-        GameManager.Instance.onGameOver += onGameOver;
+        //GameManager.Instance.onGameOver += onGameOver;
 
         // now the manager is ready to work
         _enabled = true;
