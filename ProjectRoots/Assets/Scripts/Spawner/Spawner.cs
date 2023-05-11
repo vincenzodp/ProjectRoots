@@ -71,7 +71,7 @@ public class Spawner : MonoBehaviour
         if(!useExperimentalSuperbalancedExperience)
         {
             difficultyLevel++;
-            print(difficultyLevel);
+            //print(difficultyLevel);
             ApplyDifficultyChanges();
             return;
         }

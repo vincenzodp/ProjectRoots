@@ -80,9 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7955690959620330273, guid: 001f93e150708cd4f98d8ef5f45909a6, type: 3}
-  _fireRate: 0.7
-  _damage: 25
-  _shootRange: 0
+  _launcherData: {fileID: 11400000, guid: f0a7382c0dda30e458a70e7d7f2b4d8d, type: 2}
   _projectileSpawner: {fileID: 8794547341049224774}
 --- !u!1 &2740579439776203706
 GameObject:
@@ -96,7 +94,7 @@ GameObject:
   - component: {fileID: 1385830869189682213}
   - component: {fileID: 6333390052397268565}
   m_Layer: 0
-  m_Name: Cylinder.013
+  m_Name: TowerGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +208,7 @@ GameObject:
   - component: {fileID: 587885082866228440}
   - component: {fileID: 9085236625521478063}
   m_Layer: 0
-  m_Name: Plane.005
+  m_Name: TowerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

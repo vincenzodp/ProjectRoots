@@ -1,46 +1,94 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TurretPurchaseManager : MonoBehaviour
+public class LauncherPurchaseManager : MonoBehaviour
 {
     [Header("Purchase Panel")]
     [SerializeField] private Transform _purchasePanel;
     [SerializeField] private Vector3 _purchasePanelShowScale;
     [SerializeField] private float _panelTimeToShow;
 
+    [Header("Info Panel")]
+    [SerializeField] private CanvasGroup _infoPanelCanvasGroup;
+    [SerializeField] private TMP_Text _launcherCostText;
+    [SerializeField] private TMP_Text _launcherDamageText;
+    [SerializeField] private TMP_Text _launcherFireRateText;
+    [SerializeField] private TMP_Text _launcherShootRangeText;
+
     [Header("Slot Purchase Buttons")]
-    [SerializeField] private List<TurretPruchaseButton> _leftPurchaseButtons;
-    [SerializeField] private List<TurretPruchaseButton> _rightPurchaseButtons;
+    [SerializeField] private List<LauncherSlotPurchaseButton> _leftPurchaseButtons;
+    [SerializeField] private List<LauncherSlotPurchaseButton> _rightPurchaseButtons;
     [SerializeField] private Vector3 _purchaseButtonsShowScale;
     [SerializeField] private float _buttonsTimeToShow;
 
     [Header("Purchase Buttons")]
+    [SerializeField] private List<LauncherPurchaseButton> _launcherPurchaseButtons;
     [SerializeField] private Button _cancelBtn;
 
     private int _enabledSlotsIndex = 0;
 
-
+    private Vector3 offset;
 
     #region MONOBEHAVIOUR_METHODS
 
     private void Awake()
     {
+        offset = _purchasePanel.position - _infoPanelCanvasGroup.transform.position;
+
+        HideInfoPanel();
+
         _purchasePanel.localScale = Vector3.zero;
 
-        foreach (TurretPruchaseButton tpb in _leftPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _leftPurchaseButtons)
         {
             tpb.transform.localScale = Vector3.zero;
         }
 
-        foreach (TurretPruchaseButton tpb in _rightPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _rightPurchaseButtons)
         {
             tpb.transform.localScale = Vector3.zero;
+        }
+
+        foreach (LauncherPurchaseButton lpb in _launcherPurchaseButtons)
+        {
+            lpb.OnHovered += LauncherPurchaseButton_OnHovered;
+            lpb.OnExit += LauncherPurchaseButton_OnExit;
         }
 
         _cancelBtn.onClick.AddListener(OnCancelBtnClicked);
+    }
+
+    private void LauncherPurchaseButton_OnExit()
+    {
+        HideInfoPanel();
+    }
+
+    private void HideInfoPanel()
+    {
+        _infoPanelCanvasGroup.alpha = 0;
+        _infoPanelCanvasGroup.interactable = false;
+        _infoPanelCanvasGroup.blocksRaycasts = false;
+    }
+
+    private void LauncherPurchaseButton_OnHovered(float price, float damage, float fireRate, float shootRange)
+    {
+        ShowInfoPanel();
+
+        _launcherCostText.text = price.ToString();
+        _launcherDamageText.text = damage.ToString();
+        _launcherFireRateText.text = fireRate.ToString();
+        _launcherCostText.text = shootRange.ToString();
+    }
+
+    private void ShowInfoPanel()
+    {
+        _infoPanelCanvasGroup.alpha = 1;
+        _infoPanelCanvasGroup.interactable = true;
+        _infoPanelCanvasGroup.blocksRaycasts = true;
     }
 
     private void Start()
@@ -50,12 +98,12 @@ public class TurretPurchaseManager : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (TurretPruchaseButton tpb in _leftPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _leftPurchaseButtons)
         {
             tpb.OnPurchaseButtonClicked += TurretPurchaseButton_OnLeftPurchaseButtonClicked;
         }
 
-        foreach (TurretPruchaseButton tpb in _rightPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _rightPurchaseButtons)
         {
             tpb.OnPurchaseButtonClicked += TurretPurchaseButton_OnRightPurchaseButtonClicked;
         }
@@ -63,12 +111,12 @@ public class TurretPurchaseManager : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (TurretPruchaseButton tpb in _leftPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _leftPurchaseButtons)
         {
             tpb.OnPurchaseButtonClicked -= TurretPurchaseButton_OnLeftPurchaseButtonClicked;
         }
 
-        foreach (TurretPruchaseButton tpb in _rightPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _rightPurchaseButtons)
         {
             tpb.OnPurchaseButtonClicked -= TurretPurchaseButton_OnRightPurchaseButtonClicked;
         }
@@ -122,7 +170,7 @@ public class TurretPurchaseManager : MonoBehaviour
     public void EnableNextPurchaseSlots()
     {
         _enabledSlotsIndex++;
-        foreach (TurretPruchaseButton tpb in _leftPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _leftPurchaseButtons)
         {
             if(tpb.Index == _enabledSlotsIndex)
             {
@@ -131,7 +179,7 @@ public class TurretPurchaseManager : MonoBehaviour
             }
         }
 
-        foreach (TurretPruchaseButton tpb in _rightPurchaseButtons)
+        foreach (LauncherSlotPurchaseButton tpb in _rightPurchaseButtons)
         {
             if (tpb.Index == _enabledSlotsIndex)
             {
@@ -147,12 +195,23 @@ public class TurretPurchaseManager : MonoBehaviour
 
     private void ShowPurchasePanel(Vector3 at)
     {
+        foreach (LauncherPurchaseButton lpb in _launcherPurchaseButtons)
+        {
+            lpb.gameObject.SetActive(true);
+        }
+
         _purchasePanel.position = at;
+        _infoPanelCanvasGroup.transform.position = at - offset;
         StartCoroutine(ScaleToShow(_purchasePanel, _purchasePanelShowScale, _panelTimeToShow));
     }
 
     private void HidePurchasePanel()
     {
+        foreach (LauncherPurchaseButton lpb in _launcherPurchaseButtons)
+        {
+            lpb.gameObject.SetActive(false);
+        }
+
         StartCoroutine(ScaleToShow(_purchasePanel, Vector3.zero, _panelTimeToShow));
     }
 

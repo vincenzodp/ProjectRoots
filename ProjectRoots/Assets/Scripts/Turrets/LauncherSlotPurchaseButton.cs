@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TurretPruchaseButton : MonoBehaviour
+public class LauncherSlotPurchaseButton : MonoBehaviour
 {
     public event Action<Vector3, int> OnPurchaseButtonClicked;
 
