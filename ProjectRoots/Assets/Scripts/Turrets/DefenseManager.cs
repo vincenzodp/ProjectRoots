@@ -78,7 +78,7 @@ public class DefenseManager : MonoBehaviour
         _rightTargetDetector.OnNewNearestEnemyFound += targetDetector_OnNewRightNearestEnemyFound;
 
         // Let the first row of defences grow
-        //NextDefensesBloom();
+        NextDefensesBloom();
 
         //Subscribes to Game Manager relevant events
         GameManager.Instance.onGameOver += onGameOver;
