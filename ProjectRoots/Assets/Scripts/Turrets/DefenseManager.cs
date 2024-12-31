@@ -19,15 +19,13 @@ public class DefenseManager : MonoBehaviour
 
 
     [Header("Target Providers")]
-
     [RequireInterface(typeof(ITargetProvider))]
     public Object leftTargetProvider;
-
 
     [RequireInterface(typeof(ITargetProvider))]
     public Object rightTargetProvider;
 
-
+    [SerializeField] List<Launcher> _launchersList;
 
     private int _defesesBloomIndex = 0; // Up to 3
 
@@ -72,7 +70,7 @@ public class DefenseManager : MonoBehaviour
         _rightTargetDetector.OnNewNearestEnemyFound += targetDetector_OnNewRightNearestEnemyFound;
 
         // Let the first row of defences grow
-        NextDefensesBloom();
+        //NextDefensesBloom();
 
         //Subscribes to Game Manager relevant events
         //GameManager.Instance.onGameOver += onGameOver;
@@ -97,6 +95,11 @@ public class DefenseManager : MonoBehaviour
         // If enabled, also the detectors should work
         _leftTargetDetector.Update();
         _rightTargetDetector.Update();
+    }
+
+    public void InstantiateLauncher(LauncherData launcherData)
+    {
+
     }
 
     /// <summary>

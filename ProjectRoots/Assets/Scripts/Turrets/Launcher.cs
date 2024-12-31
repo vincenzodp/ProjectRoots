@@ -29,7 +29,6 @@ public class Launcher : MonoBehaviour
 
     private DefenseManager _defenseManager;
 
-
     private float _fireRate;
     private float _damage;
     private float _shootRange;

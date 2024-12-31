@@ -56,10 +56,16 @@ public class LauncherPurchaseManager : MonoBehaviour
         foreach (LauncherPurchaseButton lpb in _launcherPurchaseButtons)
         {
             lpb.OnHovered += LauncherPurchaseButton_OnHovered;
+            lpb.OnClick += LauncherPurchaseButton_OnClick;
             lpb.OnExit += LauncherPurchaseButton_OnExit;
         }
 
         _cancelBtn.onClick.AddListener(OnCancelBtnClicked);
+    }
+
+    private void LauncherPurchaseButton_OnClick(LauncherData launcherData)
+    {
+        
     }
 
     private void LauncherPurchaseButton_OnExit()
