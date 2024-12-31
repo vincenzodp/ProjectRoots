@@ -12,6 +12,7 @@ public static class SoundManager
         MainTheme,
         TurretShoot,
         EnemyHit,
+        EnemyAttack,
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;

@@ -75,4 +75,9 @@ public class TestSounds : MonoBehaviour
         }
         
     }
+
+    public void PlayEnemyAttackSound()
+    {
+        SoundManager.PlaySoundEffect(SoundManager.Sound.EnemyAttack);
+    }
 }

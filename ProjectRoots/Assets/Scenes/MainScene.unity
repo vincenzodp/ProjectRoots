@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1557250783}
-  m_IndirectSpecularColor: {r: 0.28379664, g: 0.40975183, b: 0.6566748, a: 1}
+  m_IndirectSpecularColor: {r: 0.2837968, g: 0.40975207, b: 0.656675, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1105,7 +1105,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &907047125
 PrefabInstance:
@@ -1635,7 +1635,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7955690959620330273, guid: 001f93e150708cd4f98d8ef5f45909a6, type: 3}
-  _launcherData: {fileID: 11400000, guid: f0a7382c0dda30e458a70e7d7f2b4d8d, type: 2}
+  _fireRate: 0.7
+  _damage: 30
+  _shootRange: 15
   _projectileSpawner: {fileID: 1144355502}
 --- !u!4 &1144355502 stripped
 Transform:
@@ -3284,7 +3286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7955690959620330273, guid: 001f93e150708cd4f98d8ef5f45909a6, type: 3}
-  _launcherData: {fileID: 11400000, guid: f0a7382c0dda30e458a70e7d7f2b4d8d, type: 2}
+  _fireRate: 0.7
+  _damage: 30
+  _shootRange: 15
   _projectileSpawner: {fileID: 1729270831}
 --- !u!1001 &1781744719
 PrefabInstance:
@@ -3477,10 +3481,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5131909382474404261, guid: 74bbd4c8ea3e0f940bcc36645e181e70, type: 3}
     - target: {fileID: 8960750851229004840, guid: b08412500debe354cbc4a9dc39360fa2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8960750851229004840, guid: b08412500debe354cbc4a9dc39360fa2, type: 3}
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 5131909382474404261, guid: 71462d6279b3a404981e02cd54a7505c, type: 3}
@@ -3490,7 +3490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960750851229004841, guid: b08412500debe354cbc4a9dc39360fa2, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8960750851229004841, guid: b08412500debe354cbc4a9dc39360fa2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5089,7 +5089,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3409356477583258154, guid: 5543fc69682fcda4f9f94570ebfd0971, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3409356477583258154, guid: 5543fc69682fcda4f9f94570ebfd0971, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5169,8 +5169,10 @@ MonoBehaviour:
   - {fileID: 1144355501}
   _finalDefensesScale: {x: 1, y: 1, z: 1}
   _bloomTime: 0.5
-  leftTargetProvider: {fileID: 6518780873534581987}
-  rightTargetProvider: {fileID: 6518780873534581986}
+  _leftTargetProviders:
+  - {fileID: 6518780873534581991}
+  _rightTargetProviders:
+  - {fileID: 6518780873534581989}
 --- !u!1 &3614652009238665410
 GameObject:
   m_ObjectHideFlags: 0
@@ -5548,7 +5550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbc98d2fab12654b9531921ab600a7a, type: 3}
---- !u!114 &6518780873534581986 stripped
+--- !u!114 &6518780873534581989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 709400376596459235, guid: 6fbc98d2fab12654b9531921ab600a7a, type: 3}
   m_PrefabInstance: {fileID: 6518780873534581985}
@@ -5559,7 +5561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b63d9c314500b343ad99eb52000f274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6518780873534581987 stripped
+--- !u!114 &6518780873534581991 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8000547055106806288, guid: 6fbc98d2fab12654b9531921ab600a7a, type: 3}
   m_PrefabInstance: {fileID: 6518780873534581985}
